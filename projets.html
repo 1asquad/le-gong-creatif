@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nos Réalisations — LE GONG CRÉATIF</title>
+  <link rel="icon" type="image/png" href="https://z-cdn-media.chatglm.cn/files/39360933-31f4-4d9c-8b10-7a3989859602.png?auth_key=1877482110-1643ed28b2964e06bbf6d833d470ae1d-0-384cd35bb5c8b1ba95300a25a71f6aca">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/crispy-tacos" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Host Grotesk"', 'sans-serif'], doc: ['"Crispy Tacos"', 'cursive'] },
+          colors: {
+            bg: '#FAF6F1', dark: '#1A120B', txt: '#2A1D14',
+            sub: '#6B5B4D', faint: '#9A8E82',
+            line: 'rgba(42,29,20,0.06)',
+            brand: {
+              DEFAULT: '#D97B2A', dark: '#B86420', light: '#FEF0E2',
+              mid: '#F5D4B0', brown: '#8B5E3C', 'brown-dk': '#6B4730', 'brown-lt': '#F0E6DA',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    ::selection{background:#D97B2A;color:#fff}
+    @media(pointer:fine){body{overflow-x:hidden;cursor:none}}
+    body{background:#FAF6F1;color:#2A1D14;font-family:'Host Grotesk',sans-serif}
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-track{background:#FAF6F1}
+    ::-webkit-scrollbar-thumb{background:#D97B2A;border-radius:3px}
+
+    .cur-dot{width:8px;height:8px;background:#D97B2A;border-radius:50%;position:fixed;pointer-events:none;z-index:100001;transition:transform .1s,opacity .3s;mix-blend-mode:difference}
+    .cur-ring{width:40px;height:40px;border:1.5px solid rgba(217,123,42,.3);border-radius:50%;position:fixed;pointer-events:none;z-index:100000;transition:width .4s cubic-bezier(.22,1,.36,1),height .4s cubic-bezier(.22,1,.36,1),border-color .3s,background .3s,opacity .3s;mix-blend-mode:difference}
+    .cur-ring.hov{width:64px;height:64px;border-color:rgba(217,123,42,.55);background:rgba(217,123,42,.05);will-change:width,height,transform}
+    .cur-ring.click{transform:scale(.8)}
+    .cur-dot.hide,.cur-ring.hide{opacity:0}
+    @media(max-width:768px),(pointer:coarse){.cur-dot,.cur-ring{display:none!important}}
+
+    .nav-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#D97B2A,#8B5E3C);width:0%;z-index:1001;border-radius:0 1px 1px 0;will-change:width}
+    .nav-outer{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:0 24px;transition:transform .4s cubic-bezier(.22,1,.36,1)}
+    .nav-outer.hide{transform:translateY(-100%)}
+    .nav-inner{max-width:1180px;margin:0 auto;height:84px;display:flex;align-items:center;justify-content:space-between;border-radius:0 0 16px 16px;padding:0 28px;transition:all .5s cubic-bezier(.22,1,.36,1)}
+    .nav-inner.top{background:transparent;border:1px solid transparent;box-shadow:none;backdrop-filter:none}
+    .nav-inner.scrolled{background:rgba(250,246,241,.82);border:1px solid rgba(42,29,20,.04);border-top:none;box-shadow:0 4px 30px rgba(42,29,20,.04),0 1px 0 rgba(42,29,20,.02);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+    @media(max-width:767px){.nav-outer{padding:0}.nav-inner{max-width:100%;border-radius:0;padding:0 20px;height:72px}.nav-inner.scrolled{border-left:none;border-right:none;border-radius:0}}
+    .logo-wrap{position:relative;transition:opacity .3s,transform .3s;min-width:0;flex-shrink:1;overflow:hidden}
+    .logo-wrap:hover{opacity:.8;transform:scale(1.02)}
+    .logo-dark{transition:opacity .4s ease,transform .4s ease}
+    .logo-light{position:absolute;top:50%;left:0;transform:translateY(-50%);opacity:0;transition:opacity .4s ease,transform .4s ease}
+    .nav-inner.top .logo-dark{opacity:1;transform:translateY(-50%)}.nav-inner.top .logo-light{opacity:0;transform:translateY(-50%) scale(.95)}
+    .nav-inner.scrolled .logo-dark{opacity:0;transform:translateY(-50%) scale(.95)}.nav-inner.scrolled .logo-light{opacity:1;transform:translateY(-50%)}
+    .nav-link{position:relative;display:flex;flex-direction:column;align-items:center;padding:8px 16px;cursor:none}
+    .nl-text{display:block;height:20px;overflow:hidden;position:relative}
+    .nl-text span{display:block;height:20px;line-height:20px;font-size:13px;font-weight:500;letter-spacing:.01em;transition:transform .4s cubic-bezier(.22,1,.36,1)}
+    .nl-text span:first-child{color:#6B5B4D}.nl-text span:last-child{position:absolute;top:0;left:0;color:#D97B2A;transform:translateY(100%)}
+    .nav-link:hover .nl-text span:first-child{transform:translateY(-100%)}.nav-link:hover .nl-text span:last-child{transform:translateY(0)}
+    .nl-line{display:block;height:1.5px;width:100%;background:#D97B2A;border-radius:1px;transform:scaleX(0);transition:transform .4s cubic-bezier(.22,1,.36,1);margin-top:4px}
+    .nav-link:hover .nl-line{transform:scaleX(1)}
+    .nav-cta{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:10px;font-size:13px;font-weight:600;letter-spacing:.01em;background:transparent;border:1.5px solid rgba(217,123,42,.35);color:#D97B2A;transition:border-color .4s,color .35s,box-shadow .4s;cursor:none}
+    .nav-cta::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#B86420,#D97B2A);transform:scaleX(0);transform-origin:left center;transition:transform .5s cubic-bezier(.22,1,.36,1);z-index:0;border-radius:inherit}
+    .nav-cta:hover::before{transform:scaleX(1)}.nav-cta:hover{color:#fff;border-color:#D97B2A;box-shadow:0 4px 20px rgba(217,123,42,.2)}
+    .nav-cta span,.nav-cta .iconify{position:relative;z-index:1;transition:transform .3s}.nav-cta:hover .iconify{transform:translateX(3px)}
+    .mob-toggle{width:44px;height:44px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;border:1.5px solid rgba(42,29,20,.06);transition:all .3s;cursor:none;flex-shrink:0}
+    .mob-toggle:hover{border-color:rgba(217,123,42,.3);background:rgba(217,123,42,.04)}
+    .mob-toggle span{display:block;height:1.5px;background:#2A1D14;border-radius:1px;transition:all .35s cubic-bezier(.22,1,.36,1);transform-origin:center}
+    .mob-toggle span:nth-child(1){width:20px}.mob-toggle span:nth-child(2){width:14px}.mob-toggle span:nth-child(3){width:18px}
+    .mob-toggle.open span:nth-child(1){transform:rotate(45deg) translate(3px,5px);background:#D97B2A}
+    .mob-toggle.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+    .mob-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(3px,-5px);width:20px;background:#D97B2A}
+    .mob-toggle.open{border-color:rgba(217,123,42,.2);background:rgba(217,123,42,.04)}
+    #mob{background:rgba(250,246,241,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+    .mob-link{opacity:0;transform:translateY(24px);transition:all .45s cubic-bezier(.22,1,.36,1)}
+    #mob.open .mob-link{opacity:1;transform:translateY(0)}
+    #mob.open .mob-link:nth-child(1){transition-delay:.1s}#mob.open .mob-link:nth-child(2){transition-delay:.17s}#mob.open .mob-link:nth-child(3){transition-delay:.24s}#mob.open .mob-link:nth-child(4){transition-delay:.31s}
+    .mob-cta{opacity:0;transform:translateY(24px);transition:all .45s cubic-bezier(.22,1,.36,1) .38s}#mob.open .mob-cta{opacity:1;transform:translateY(0)}
+    .mob-socials{opacity:0;transform:translateY(24px);transition:all .45s cubic-bezier(.22,1,.36,1) .45s}#mob.open .mob-socials{opacity:1;transform:translateY(0)}
+    .soc-btn{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;transition:all .3s cubic-bezier(.22,1,.36,1)}.soc-btn:hover{transform:translateY(-2px)}
+    .soc-btn-light{border:1px solid rgba(42,29,20,.08);color:#6B5B4D;background:transparent}.soc-btn-light:hover{border-color:rgba(217,123,42,.25);color:#D97B2A;background:rgba(217,123,42,.04)}
+    .soc-btn-dark{border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.3);background:transparent}.soc-btn-dark:hover{border-color:rgba(217,123,42,.3);color:#D97B2A;background:rgba(217,123,42,.06)}
+    
+    .rv{opacity:0;transform:translateY(36px);transition:all .75s cubic-bezier(.22,1,.36,1)}.rv.on{opacity:1;transform:translateY(0)}
+    .d1{transition-delay:.08s!important}.d2{transition-delay:.16s!important}.d3{transition-delay:.24s!important}.d4{transition-delay:.32s!important}.d5{transition-delay:.4s!important}
+
+    .sec-doc{font-family:'Crispy Tacos','Host Grotesk',cursive;font-size:clamp(22px,3.5vw,32px);line-height:1.15;letter-spacing:-0.01em}
+
+    /* Project Cards */
+    .pc{overflow:hidden;border-radius:10px}
+    .pc img{transition:transform .65s cubic-bezier(.22,1,.36,1)}.pc:hover img{transform:scale(1.035)}
+    .pc .po{opacity:0;transition:opacity .35s}.pc:hover .po{opacity:1}
+    .pc .pt{transform:translateY(10px);opacity:0;transition:all .35s cubic-bezier(.22,1,.36,1) .04s}.pc:hover .pt{transform:translateY(0);opacity:1}
+    .pc .pp{transform:translateY(10px);opacity:0;transition:all .35s cubic-bezier(.22,1,.36,1) .08s}.pc:hover .pp{transform:translateY(0);opacity:1}
+
+    /* Filter Buttons */
+    .filter-btn{padding:8px 20px;border-radius:8px;font-size:13px;font-weight:500;border:1px solid rgba(42,29,20,.08);color:#6B5B4D;transition:all .3s;cursor:pointer}
+    .filter-btn:hover{border-color:rgba(217,123,42,.3);color:#D97B2A}
+    .filter-btn.active{background:#D97B2A;color:#fff;border-color:#D97B2A;box-shadow:0 4px 16px rgba(217,123,42,.2)}
+    
+    /* Portfolio item transition */
+    .portfolio-item{transition:opacity .4s cubic-bezier(.22,1,.36,1),transform .4s cubic-bezier(.22,1,.36,1)}
+
+    body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.025;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAAAXNSR0IArs4c6QAAIABJREFUeF7tnQl8VNX/xz/fn3Mk5vNJmxyaJBkSCZJUqSIoqgCFfZ0FVdRRVV9AqKoql1qoiqJ6F+KKioIiiCoqr6gBFF1FW3UFEUQbZu8ny/0knlmWTM7Jx7szO7JyZe8+e+3ye+3x/z3NkzJy7v+e85997x73nN+gKz+GnEAAAAASUVORK5CYII=")}
+  </style>
+</head>
+<body>
+
+  <div class="cur-dot" id="cDot"></div>
+  <div class="cur-ring" id="cRing"></div>
+  <div class="nav-progress" id="navProg"></div>
+
+  <!-- NAVBAR -->
+  <nav class="nav-outer" id="navOuter" aria-label="Navigation principale">
+    <div class="nav-inner top" id="navInner">
+      <a href="index.html" class="logo-wrap hov" id="logoLink" style="display:flex;align-items:center" aria-label="LE GONG CRÉATIF — Accueil">
+        <img src="Logoblanc.png" alt="" class="logo-dark" style="height:48px;width:auto;object-contain;position:absolute;top:50%;left:0;transform:translateY(-50%)">
+        <img src="Logorvb1.png" alt="" class="logo-light" style="height:48px;width:auto;object-contain">
+        <span style="display:block;height:48px;visibility:hidden;width:clamp(130px,38vw,220px)">LE GONG CRÉATIF</span>
+      </a>
+      <div class="hidden md:flex items-center gap-1">
+        <a href="index.html#about" class="nav-link hov"><span class="nl-text"><span>À propos</span><span>À propos</span></span><span class="nl-line"></span></a>
+        <a href="index.html#services" class="nav-link hov"><span class="nl-text"><span>Services</span><span>Services</span></span><span class="nl-line"></span></a>
+        <a href="projets.html" class="nav-link hov"><span class="nl-text"><span>Réalisations</span><span>Réalisations</span></span><span class="nl-line"></span></a>
+        <a href="index.html#contact" class="nav-link hov"><span class="nl-text"><span>Contact</span><span>Contact</span></span><span class="nl-line"></span></a>
+      </div>
+      <div class="flex items-center gap-4 flex-shrink-0">
+        <a href="index.html#contact" class="nav-cta hov hidden md:inline-flex" id="navCta"><span>Parlons-en</span><span class="iconify" data-icon="lucide:arrow-right" data-width="14"></span></a>
+        <button class="mob-toggle md:hidden" id="mbtn" aria-label="Menu" aria-expanded="false" aria-controls="mob"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mob" class="fixed inset-0 z-[998] flex flex-col items-center justify-center gap-2 translate-x-full transition-transform duration-500 ease-out" role="dialog" aria-modal="true">
+    <a href="index.html" class="mob-link hov mb-3" id="mobLogo"><img src="Logorvb1.png" alt="" style="height:58px;width:auto;object-contain"></a>
+    <a href="index.html#about" class="mob-link text-[32px] font-bold text-txt hover:text-brand transition-colors hov py-2">À propos</a>
+    <a href="index.html#services" class="mob-link text-[32px] font-bold text-txt hover:text-brand transition-colors hov py-2">Services</a>
+    <a href="projets.html" class="mob-link text-[32px] font-bold text-txt hover:text-brand transition-colors hov py-2">Réalisations</a>
+    <a href="index.html#contact" class="mob-link text-[32px] font-bold text-txt hover:text-brand transition-colors hov py-2">Contact</a>
+    <a href="index.html#contact" class="mob-cta mt-5 inline-flex items-center gap-2 text-[14px] font-semibold text-white bg-brand px-7 py-3.5 rounded-xl hov">Parlons-en <span class="iconify" data-icon="lucide:arrow-right" data-width="14"></span></a>
+    <div class="mob-socials flex items-center gap-3 mt-6">
+      <a href="#" class="soc-btn soc-btn-light hov" aria-label="Facebook"><span class="iconify" data-icon="mdi:facebook" data-width="21"></span></a>
+      <a href="#" class="soc-btn soc-btn-light hov" aria-label="X / Twitter"><span class="iconify" data-icon="ri:twitter-x-fill" data-width="19"></span></a>
+      <a href="#" class="soc-btn soc-btn-light hov" aria-label="Instagram"><span class="iconify" data-icon="mdi:instagram" data-width="21"></span></a>
+      <a href="#" class="soc-btn soc-btn-light hov" aria-label="LinkedIn"><span class="iconify" data-icon="mdi:linkedin" data-width="21"></span></a>
+    </div>
+  </div>
+
+  <!-- HERO PAGE -->
+  <section class="bg-dark relative overflow-hidden pt-32 pb-20">
+    <div class="absolute inset-0 opacity-[0.022]" style="background-image:url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cpath d=%22M30 0v60M0 30h60%22 stroke=%22%23fff%22 stroke-width=%22.5%22/%3E%3C/svg%3E')"></div>
+    <div class="max-w-[1180px] mx-auto px-6 lg:px-10 relative z-10 text-center">
+      <span class="rv d1 inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-brand mb-4">Réalisations</span>
+      <h1 class="sec-doc text-white rv d2">Nos projets<span class="text-brand">.</span></h1>
+      <p class="text-white/40 text-[15px] font-light mt-4 max-w-[480px] mx-auto rv d3">Découvrez l'ensemble de nos réalisations. Du branding à la production audiovisuelle, chaque projet est pensé pour faire la différence.</p>
+    </div>
+  </section>
+
+  <!-- FILTERS & PROJECTS -->
+  <section class="py-20 md:py-28 px-6 lg:px-10" aria-label="Portfolio">
+    <div class="max-w-[1180px] mx-auto">
+      
+      <!-- Filters -->
+      <div class="flex flex-wrap justify-center gap-3 mb-14 rv">
+        <button class="filter-btn active" data-filter="all">Tous</button>
+        <button class="filter-btn" data-filter="digital">Affiche & Print</button>
+        <button class="filter-btn" data-filter="brand">Branding</button>
+        <button class="filter-btn" data-filter="motion">Motion Design</button>
+        <button class="filter-btn" data-filter="prod">Production</button>
+      </div>
+
+      <!-- Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5" id="portfolioGrid">
+        
+        <!-- ══════════════════════════════════
+             AFFICHE & PRINT — 25 projets
+             ══════════════════════════════════ -->
+
+        <!-- AF1 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af1.jpg" alt="Affiche lumineuse de Pâques avec silhouette au lever du soleil" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Joyeuses Pâques</h3><p class="pp text-[12.5px] text-white/55 mt-1">Visuel de vœux pascals</p></div></div>
+        </div>
+
+        <!-- AF2 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af2.jpg" alt="Affiche Afro Night pour gala de charité avec artiste invité" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Afro Night Gala de charité</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche événementielle caritative</p></div></div>
+        </div>
+
+        <!-- AF3 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af3.jpg" alt="Promotion Ola Bio sur les emballages pour grossistes" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Ola Bio Promo Choc</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche promotionnelle grossistes</p></div></div>
+        </div>
+
+        <!-- AF4 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af4.jpg" alt="Visuel Ola Bio Tabaski avec bélier et emballages" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Ola Bio Tabaski</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche saisonnière Tabaski</p></div></div>
+        </div>
+
+        <!-- AF5 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af5.jpg" alt="Programme de matinée touristique avec monuments et montgolfières" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">La Matinée Touristique</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche tourisme & excursion</p></div></div>
+        </div>
+
+        <!-- AF6 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af6.jpg" alt="Visuel teasing SABÉ pour ouverture au Golden Tulip" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">SAEB Coming Soon</h3><p class="pp text-[12.5px] text-white/55 mt-1">Annonce d'ouverture</p></div></div>
+        </div>
+
+        <!-- AF7 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af7.jpg" alt="Affiche musicale de Bouba Fulani avec micro et portrait" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Bouba Fulani en concert</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche de concert</p></div></div>
+        </div>
+
+        <!-- AF8 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af8.jpg" alt="Visuel musical rose pour Ladesh et First King" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Ci Gusta</h3><p class="pp text-[12.5px] text-white/55 mt-1">Cover musicale</p></div></div>
+        </div>
+
+        <!-- AF9 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af9.jpg" alt="Mockup de dépliant pour l'Université Agricole K-D.K" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Université Agricole K-D.K</h3><p class="pp text-[12.5px] text-white/55 mt-1">Dépliant institutionnel</p></div></div>
+        </div>
+
+        <!-- AF10 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af10.jpg" alt="Mockup de brochure pliée pour l'Université Agricole K-D.K" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Université Agricole K-D.K</h3><p class="pp text-[12.5px] text-white/55 mt-1">Brochure institutionnelle</p></div></div>
+        </div>
+
+        <!-- AF11 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af11.jpg" alt="Affiche verte « Se connaître pour mieux s'orienter »" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Live Session Orientation</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche formation & orientation</p></div></div>
+        </div>
+
+        <!-- AF12 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af12.jpg" alt="Annonce de mariage fleurie pour Andil et Malikah" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Andil & Malikah</h3><p class="pp text-[12.5px] text-white/55 mt-1">Save the date mariage</p></div></div>
+        </div>
+
+        <!-- AF13 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af13.jpg" alt="Campagne de dépistage du cancer de la prostate" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Dépistage du cancer</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche santé publique</p></div></div>
+        </div>
+
+        <!-- AF14 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af14.jpg" alt="Visuel Ola Bio pour la fête de la Pentecôte" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Ola Bio Pentecôte</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche de vœux</p></div></div>
+        </div>
+
+        <!-- AF15 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af15.jpg" alt="Campagne de dépistage et prise en charge de la cataracte" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Opération Cataracte</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche santé accessible</p></div></div>
+        </div>
+
+        <!-- AF16 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af16.jpg" alt="Affiche santé publique sur l'importance du dépistage visuel" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Santé visuelle</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche de sensibilisation</p></div></div>
+        </div>
+
+        <!-- AF17 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af17.jpg" alt="Offre de moins 50 % pour affiches communales" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Réduction GeniComp</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche promotionnelle</p></div></div>
+        </div>
+
+        <!-- AF18 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af18.jpg" alt="Roll-up de bienvenue pour l'Université Agricole K-D.K" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Université Agricole K-D.K</h3><p class="pp text-[12.5px] text-white/55 mt-1">Roll-up d'accueil</p></div></div>
+        </div>
+
+        <!-- AF19 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af19.jpg" alt="Roll-up présentant les produits de la ferme K-D.K" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Ferme K-D.K</h3><p class="pp text-[12.5px] text-white/55 mt-1">Roll-up produits agricoles</p></div></div>
+        </div>
+
+        <!-- AF20 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af20.jpg" alt="Roll-up présentant les produits de la ferme K-D.K" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Ferme K-D.K</h3><p class="pp text-[12.5px] text-white/55 mt-1">Roll-up produits agricoles</p></div></div>
+        </div>
+
+        <!-- AF21 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af21.jpg" alt="Roll-up sur l'élevage de 40 000 pondeuses" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Projet Œuf et Asticots</h3><p class="pp text-[12.5px] text-white/55 mt-1">Roll-up agroalimentaire</p></div></div>
+        </div>
+
+        <!-- AF22 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af22.jpg" alt="Roll-up des filières de formation de l'Université Agricole K-D.K" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Université Agricole K-D.K</h3><p class="pp text-[12.5px] text-white/55 mt-1">Roll-up filières agricoles</p></div></div>
+        </div>
+
+        <!-- AF23 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af23.jpg" alt="Affiche de lancement du nouveau site web Elyon Agro" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Elyon Agro</h3><p class="pp text-[12.5px] text-white/55 mt-1">Annonce site internet</p></div></div>
+        </div>
+
+        <!-- AF24 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af24.jpg" alt="Affiche sobre de Pâques avec symbole de croix" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Excellente fête de Pâques</h3><p class="pp text-[12.5px] text-white/55 mt-1">Visuel de vœux pascals</p></div></div>
+        </div>
+
+        <!-- AF25 -->
+        <div class="pc hov portfolio-item" data-category="digital">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af25.jpg" alt="Affiche de Pâques avec croix sur fond lumineux" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Bonne fête de Pâques</h3><p class="pp text-[12.5px] text-white/55 mt-1">Visuel de vœux pascals</p></div></div>
+        </div>
+
+        <!-- ══════════════════════════════════
+             BRANDING — 5 projets
+             ══════════════════════════════════ -->
+
+        <!-- BRD1 -->
+        <div class="pc hov portfolio-item" data-category="brand">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/brd1.jpg" alt="Planche de branding YouthPoliticForum avec logo, couleurs et supports" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Branding</span><h3 class="pp text-[19px] font-bold text-white">YouthPoliticForum</h3><p class="pp text-[12.5px] text-white/55 mt-1">Identité visuelle & déclinaisons</p></div></div>
+        </div>
+
+        <!-- BRD2 -->
+        <div class="pc hov portfolio-item" data-category="brand">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/brd2.jpg" alt="Planche de branding PJD Graphik avec logo et supports" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Branding</span><h3 class="pp text-[19px] font-bold text-white">PJD Graphik</h3><p class="pp text-[12.5px] text-white/55 mt-1">Identité de marque</p></div></div>
+        </div>
+
+        <!-- BRD3 -->
+        <div class="pc hov portfolio-item" data-category="brand">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/brd3.jpg" alt="Planche d'identité Point avec couleurs, logo et applications" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Branding</span><h3 class="pp text-[19px] font-bold text-white">Point</h3><p class="pp text-[12.5px] text-white/55 mt-1">Charte graphique & supports</p></div></div>
+        </div>
+
+        <!-- BRD4 -->
+        <div class="pc hov portfolio-item" data-category="brand">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/brd4.jpg" alt="Planche de branding Digit Ben avec logo et supports numériques" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Branding</span><h3 class="pp text-[19px] font-bold text-white">Digit Ben</h3><p class="pp text-[12.5px] text-white/55 mt-1">Identité digitale</p></div></div>
+        </div>
+
+        <!-- BRD5 -->
+        <div class="pc hov portfolio-item" data-category="brand">
+          <div class="relative aspect-[4/3]"><img src="uploads/images/brd5.jpg" alt="Charte visuelle Shaokao K25 pour restaurant de grillades" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Branding</span><h3 class="pp text-[19px] font-bold text-white">Shaokao K25</h3><p class="pp text-[12.5px] text-white/55 mt-1">Identité restaurant grillade</p></div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-dark border-t border-white/[0.04] py-9 px-6 lg:px-10" role="contentinfo">
+    <div class="max-w-[1180px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <a href="index.html" class="hov flex items-center" id="footerLogo" aria-label="LE GONG CRÉATIF — Accueil">
+        <img src="https://z-cdn-media.chatglm.cn/files/d7e01b12-2823-4bb7-bc19-086786e2bd36.png?auth_key=1877482110-50786bd1ea064b579e18bbfb86ac7ba4-0-48dd675d6580a65d627e5b7786b50ea2" alt="" style="height:40px;width:auto;object-contain;opacity:.55;transition:opacity .3s" onmouseenter="this.style.opacity='.8'" onmouseleave="this.style.opacity='.55'">
+      </a>
+      <div class="flex items-center gap-2">
+        <a href="#" class="soc-btn soc-btn-dark hov" style="width:32px;height:32px;border-radius:8px" aria-label="Facebook"><span class="iconify" data-icon="mdi:facebook" data-width="15"></span></a>
+        <a href="#" class="soc-btn soc-btn-dark hov" style="width:32px;height:32px;border-radius:8px" aria-label="X / Twitter"><span class="iconify" data-icon="ri:twitter-x-fill" data-width="13"></span></a>
+        <a href="#" class="soc-btn soc-btn-dark hov" style="width:32px;height:32px;border-radius:8px" aria-label="Instagram"><span class="iconify" data-icon="mdi:instagram" data-width="15"></span></a>
+        <a href="#" class="soc-btn soc-btn-dark hov" style="width:32px;height:32px;border-radius:8px" aria-label="LinkedIn"><span class="iconify" data-icon="mdi:linkedin" data-width="15"></span></a>
+      </div>
+      <div class="flex items-center gap-5">
+        <span class="text-[11.5px] text-white/25">© <span id="fYear"></span> LE GONG CRÉATIF</span>
+        <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="w-7 h-7 rounded-md border border-white/[0.07] flex items-center justify-center text-white/30 hover:text-brand hover:border-brand/25 transition-all hov" aria-label="Retour en haut"><span class="iconify" data-icon="lucide:arrow-up" data-width="11"></span></button>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('fYear').textContent = new Date().getFullYear();
+
+    const dot = document.getElementById('cDot'), ring = document.getElementById('cRing');
+    if (window.matchMedia('(pointer:fine)').matches) {
+      let mx = 0, my = 0, rx = 0, ry = 0;
+      document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx - 4 + 'px'; dot.style.top = my - 4 + 'px' });
+      (function lp() { rx += (mx - rx) * .12; ry += (my - ry) * .12; ring.style.left = rx - 20 + 'px'; ring.style.top = ry - 20 + 'px'; requestAnimationFrame(lp) })();
+      document.querySelectorAll('.hov').forEach(el => { el.addEventListener('mouseenter', () => ring.classList.add('hov')); el.addEventListener('mouseleave', () => ring.classList.remove('hov')) });
+      document.addEventListener('mousedown', () => ring.classList.add('click'));
+      document.addEventListener('mouseup', () => ring.classList.remove('click'));
+      document.addEventListener('mouseleave', () => { dot.classList.add('hide'); ring.classList.add('hide') });
+      document.addEventListener('mouseenter', () => { dot.classList.remove('hide'); ring.classList.remove('hide') });
+    }
+
+    const navO = document.getElementById('navOuter'), navI = document.getElementById('navInner'), prog = document.getElementById('navProg');
+    let lastS = 0, ht;
+    window.addEventListener('scroll', () => {
+      const s = window.scrollY, t = document.body.scrollHeight - window.innerHeight;
+      prog.style.width = Math.min(s / t * 100, 100) + '%';
+      if (s > 60) { navI.classList.remove('top'); navI.classList.add('scrolled') } else { navI.classList.add('top'); navI.classList.remove('scrolled') }
+      clearTimeout(ht);
+      if (s > lastS && s > 350) navO.classList.add('hide'); else if (s < lastS) navO.classList.remove('hide');
+      ht = setTimeout(() => navO.classList.remove('hide'), 350);
+      lastS = s;
+    }, { passive: true });
+
+    const mb = document.getElementById('mbtn'), mo = document.getElementById('mob'); let mop = false;
+    function closeMob() { mop = false; mo.style.transform = 'translateX(100%)'; mo.classList.remove('open'); mb.classList.remove('open'); mb.setAttribute('aria-expanded', 'false'); document.body.style.overflow = '' }
+    mb.addEventListener('click', () => { mop = !mop; mb.setAttribute('aria-expanded', mop); if (mop) { mo.style.transform = 'translateX(0)'; mo.classList.add('open'); mb.classList.add('open'); document.body.style.overflow = 'hidden' } else closeMob(); });
+    document.querySelectorAll('.mob-link,.mob-cta').forEach(l => l.addEventListener('click', closeMob));
+    document.getElementById('mobLogo').addEventListener('click', e => { e.preventDefault(); closeMob(); window.location.href = 'index.html'; });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && mop) closeMob() });
+
+    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); }) }, { threshold: 0.12 });
+    document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+    /* ═══════════════════════════════════════
+       FILTRE PORTFOLIO
+       ═══════════════════════════════════════ */
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const filter = btn.dataset.filter;
+        
+        portfolioItems.forEach(item => {
+          if (filter === 'all' || item.dataset.category === filter) {
+            item.style.display = 'block';
+            setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'scale(1)'; }, 50);
+          } else {
+            item.style.opacity = '0'; 
+            item.style.transform = 'scale(0.95)';
+            setTimeout(() => { item.style.display = 'none'; }, 400);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

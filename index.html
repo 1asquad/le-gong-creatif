@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LE GONG CRÉATIF — Agence de Communication</title>
+  <link rel="icon" type="image/png" href="uploads/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/crispy-tacos" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Host Grotesk"', 'sans-serif'], doc: ['"Crispy Tacos"', 'cursive'] },
+          colors: {
+            bg: '#FAF6F1', dark: '#1A120B', txt: '#2A1D14',
+            sub: '#6B5B4D', faint: '#9A8E82',
+            line: 'rgba(42,29,20,0.06)',
+            brand: {
+              DEFAULT: '#D97B2A', dark: '#B86420', light: '#FEF0E2',
+              mid: '#F5D4B0', brown: '#8B5E3C', 'brown-dk': '#6B4730', 'brown-lt': '#F0E6DA',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    ::selection{background:#D97B2A;color:#fff}
+    @media(pointer:fine){body{overflow-x:hidden;cursor:none}}
+    body{background:#FAF6F1;color:#2A1D14;font-family:'Host Grotesk',sans-serif}
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-track{background:#FAF6F1}
+    ::-webkit-scrollbar-thumb{background:#D97B2A;border-radius:3px}
+
+    .cur-dot{width:8px;height:8px;background:#D97B2A;border-radius:50%;position:fixed;pointer-events:none;z-index:100001;transition:transform .1s,opacity .3s;mix-blend-mode:difference}
+    .cur-ring{width:40px;height:40px;border:1.5px solid rgba(217,123,42,.3);border-radius:50%;position:fixed;pointer-events:none;z-index:100000;transition:width .4s cubic-bezier(.22,1,.36,1),height .4s cubic-bezier(.22,1,.36,1),border-color .3s,background .3s,opacity .3s;mix-blend-mode:difference}
+    .cur-ring.hov{width:64px;height:64px;border-color:rgba(217,123,42,.55);background:rgba(217,123,42,.05);will-change:width,height,transform}
+    .cur-ring.click{transform:scale(.8)}
+    .cur-dot.hide,.cur-ring.hide{opacity:0}
+    @media(max-width:768px),(pointer:coarse){.cur-dot,.cur-ring{display:none!important}}
+    @media(pointer:fine){a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #D97B2A;outline-offset:2px}}
+
+    .nav-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#D97B2A,#8B5E3C);width:0%;z-index:1001;border-radius:0 1px 1px 0;will-change:width}
+    .nav-outer{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:0 24px;transition:transform .4s cubic-bezier(.22,1,.36,1)}
+    .nav-outer.hide{transform:translateY(-100%)}
+    .nav-inner{max-width:1180px;margin:0 auto;height:84px;display:flex;align-items:center;justify-content:space-between;border-radius:0 0 16px 16px;padding:0 28px;transition:all .5s cubic-bezier(.22,1,.36,1)}
+    .nav-inner.top{background:transparent;border:1px solid transparent;box-shadow:none;backdrop-filter:none}
+    .nav-inner.scrolled{background:rgba(250,246,241,.82);border:1px solid rgba(42,29,20,.04);border-top:none;box-shadow:0 4px 30px rgba(42,29,20,.04),0 1px 0 rgba(42,29,20,.02);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+    @media(max-width:767px){
+      .nav-outer{padding:0}
+      .nav-inner{max-width:100%;border-radius:0;padding:0 20px;height:72px}
+      .nav-inner.scrolled{border-left:none;border-right:none;border-radius:0}
+    }
+    .logo-wrap{position:relative;transition:opacity .3s,transform .3s;min-width:0;flex-shrink:1;overflow:hidden}
+    .logo-wrap:hover{opacity:.8;transform:scale(1.02)}
+    .logo-dark{transition:opacity .4s ease,transform .4s ease}
+    .logo-light{position:absolute;top:50%;left:0;transform:translateY(-50%);opacity:0;transition:opacity .4s ease,transform .4s ease}
+    .nav-inner.top .logo-dark{opacity:1;transform:translateY(-50%)}
+    .nav-inner.top .logo-light{opacity:0;transform:translateY(-50%) scale(.95)}
+    .nav-inner.scrolled .logo-dark{opacity:0;transform:translateY(-50%) scale(.95)}
+    .nav-inner.scrolled .logo-light{opacity:1;transform:translateY(-50%)}
+    .nav-link{position:relative;display:flex;flex-direction:column;align-items:center;padding:8px 16px;cursor:none}
+    .nl-text{display:block;height:20px;overflow:hidden;position:relative}
+    .nl-text span{display:block;height:20px;line-height:20px;font-size:13px;font-weight:500;letter-spacing:.01em;transition:transform .4s cubic-bezier(.22,1,.36,1)}
+    .nl-text span:first-child{color:#6B5B4D}
+    .nl-text span:last-child{position:absolute;top:0;left:0;color:#D97B2A;transform:translateY(100%)}
+    .nav-link:hover .nl-text span:first-child{transform:translateY(-100%)}
+    .nav-link:hover .nl-text span:last-child{transform:translateY(0)}
+    .nl-line{display:block;height:1.5px;width:100%;background:#D97B2A;border-radius:1px;transform:scaleX(0);transition:transform .4s cubic-bezier(.22,1,.36,1);margin-top:4px}
+    .nav-link:hover .nl-line{transform:scaleX(1)}
+    .nav-cta{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:10px;font-size:13px;font-weight:600;letter-spacing:.01em;background:transparent;border:1.5px solid rgba(217,123,42,.35);color:#D97B2A;transition:border-color .4s,color .35s,box-shadow .4s;cursor:none}
+    .nav-cta::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#B86420,#D97B2A);transform:scaleX(0);transform-origin:left center;transition:transform .5s cubic-bezier(.22,1,.36,1);z-index:0;border-radius:inherit}
+    .nav-cta:hover::before{transform:scaleX(1)}
+    .nav-cta:hover{color:#fff;border-color:#D97B2A;box-shadow:0 4px 20px rgba(217,123,42,.2)}
+    .nav-cta span,.nav-cta .iconify{position:relative;z-index:1;transition:transform .3s}
+    .nav-cta:hover .iconify{transform:translateX(3px)}
+    .mob-toggle{width:44px;height:44px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;border:1.5px solid rgba(42,29,20,.06);transition:all .3s;cursor:none;flex-shrink:0}
+    .mob-toggle:hover{border-color:rgba(217,123,42,.3);background:rgba(217,123,42,.04)}
+    .mob-toggle span{display:block;height:1.5px;background:#2A1D14;border-radius:1px;transition:all .35s cubic-bezier(.22,1,.36,1);transform-origin:center}
+    .mob-toggle span:nth-child(1){width:20px}
+    .mob-toggle span:nth-child(2){width:14px}
+    .mob-toggle span:nth-child(3){width:18px}
+    .mob-toggle.open span:nth-child(1){transform:rotate(45deg) translate(3px,5px);background:#D97B2A}
+    .mob-toggle.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+    .mob-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(3px,-5px);width:20px;background:#D97B2A}
+    .mob-toggle.open{border-color:rgba(217,123,42,.2);background:rgba(217,123,42,.04)}
+    #mob{background:rgba(250,246,241,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+    .mob-link{opacity:0;transform:translateY(24px);transition:all .45s cubic-bezier(.22,1,.36,1)}
+    #mob.open .mob-link{opacity:1;transform:translateY(0)}
+    #mob.open .mob-link:nth-child(1){transition-delay:.1s}
+    #mob.open .mob-link:nth-child(2){transition-delay:.17s}
+    #mob.open .mob-link:nth-child(3){transition-delay:.24s}
+    #mob.open .mob-link:nth-child(4){transition-delay:.31s}
+    .mob-cta{opacity:0;transform:translateY(24px);transition:all .45s cubic-bezier(.22,1,.36,1) .38s}
+    #mob.open .mob-cta{opacity:1;transform:translateY(0)}
+    .mob-socials{opacity:0;transform:translateY(24px);transition:all .45s cubic-bezier(.22,1,.36,1) .45s}
+    #mob.open .mob-socials{opacity:1;transform:translateY(0)}
+    .soc-btn{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;transition:all .3s cubic-bezier(.22,1,.36,1)}
+    .soc-btn:hover{transform:translateY(-2px)}
+    .soc-btn-light{border:1px solid rgba(42,29,20,.08);color:#6B5B4D;background:transparent}
+    .soc-btn-light:hover{border-color:rgba(217,123,42,.25);color:#D97B2A;background:rgba(217,123,42,.04)}
+    .soc-btn-dark{border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.3);background:transparent}
+    .soc-btn-dark:hover{border-color:rgba(217,123,42,.3);color:#D97B2A;background:rgba(217,123,42,.06)}
+
+    .rv{opacity:0;transform:translateY(36px);transition:all .75s cubic-bezier(.22,1,.36,1)}
+    .rv.on{opacity:1;transform:translateY(0)}
+    .rv-l{opacity:0;transform:translateX(-36px);transition:all .75s cubic-bezier(.22,1,.36,1)}
+    .rv-l.on{opacity:1;transform:translateX(0)}
+    .rv-r{opacity:0;transform:translateX(36px);transition:all .75s cubic-bezier(.22,1,.36,1)}
+    .rv-r.on{opacity:1;transform:translateX(0)}
+    .d1{transition-delay:.08s!important}.d2{transition-delay:.16s!important}
+    .d3{transition-delay:.24s!important}.d4{transition-delay:.32s!important}.d5{transition-delay:.4s!important}
+
+    .ld{width:0;height:1px;background:#D97B2A;transition:width 1s cubic-bezier(.22,1,.36,1)}
+    .ld.on{width:50px}
+    .stg{background:linear-gradient(135deg,#D97B2A,#8B5E3C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+    .sc{position:relative;overflow:hidden;border:1px solid rgba(42,29,20,.05);border-radius:12px;transition:all .4s ease;min-height:380px;display:flex;flex-direction:column}
+    .sc:hover{border-color:rgba(217,123,42,.2);box-shadow:0 6px 32px rgba(217,123,42,.06);transform:translateY(-3px)}
+    .sc-bg{position:absolute;inset:0;z-index:0}
+    .sc-bg img{width:100%;height:100%;object-fit:cover;transition:transform .65s cubic-bezier(.22,1,.36,1)}
+    .sc:hover .sc-bg img{transform:scale(1.05)}
+    .sc-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,18,11,.52) 0%,rgba(26,18,11,.65) 100%);z-index:1}
+    .sc-bg video{width:100%;height:100%;object-fit:cover;transition:transform .65s cubic-bezier(.22,1,.36,1)}
+    .sc:hover .sc-bg video{transform:scale(1.05)}
+    .sc-content{position:relative;z-index:2;display:flex;flex-direction:column;flex:1;padding:32px 32px 28px}
+    @media(min-width:768px){.sc-content{padding:36px}}
+    .sc .si{transition:all .4s ease}
+    .sc:hover .si{background:#D97B2A;color:#fff;border-color:#D97B2A}
+    .sc:hover .si .iconify{color:#fff}
+    .sc .sa{opacity:0;transform:translateX(-5px);transition:all .3s ease}
+    .sc:hover .sa{opacity:1;transform:translateX(0)}
+    .sc h3{color:#fff}.sc p{color:rgba(255,255,255,.6)}
+    .sc .sc-tag{color:rgba(255,255,255,.5);background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.1)}
+
+    .pc{overflow:hidden;border-radius:10px}
+    .pc img{transition:transform .65s cubic-bezier(.22,1,.36,1)}
+    .pc:hover img{transform:scale(1.035)}
+    .pc .po{opacity:0;transition:opacity .35s}.pc:hover .po{opacity:1}
+    .pc .pt{transform:translateY(10px);opacity:0;transition:all .35s cubic-bezier(.22,1,.36,1) .04s}.pc:hover .pt{transform:translateY(0);opacity:1}
+    .pc .pp{transform:translateY(10px);opacity:0;transition:all .35s cubic-bezier(.22,1,.36,1) .08s}.pc:hover .pp{transform:translateY(0);opacity:1}
+
+    .tg{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    @media(min-width:640px){.tg{grid-template-columns:repeat(3,1fr);gap:14px}}
+    @media(min-width:1024px){.tg{grid-template-columns:repeat(5,1fr);gap:14px}}
+    .tg:hover .tc{opacity:.45}
+    .tg:hover .tc:hover{opacity:1}
+    .tc{position:relative;overflow:hidden;border-radius:14px;aspect-ratio:3/4.2;cursor:default;transition:opacity .5s cubic-bezier(.22,1,.36,1),transform .5s cubic-bezier(.22,1,.36,1),box-shadow .5s cubic-bezier(.22,1,.36,1)}
+    .tc:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,.5)}
+    .tc-img{position:absolute;inset:0;z-index:0}
+    .tc-img img{width:100%;height:100%;object-fit:cover;object-position:center 18%;transition:transform .8s cubic-bezier(.22,1,.36,1),filter .6s}
+    .tc:hover .tc-img img{transform:scale(1.1);filter:brightness(1.08) saturate(1.1)}
+    .tc-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 30%,rgba(26,18,11,.4) 55%,rgba(26,18,11,.92) 100%);transition:background .5s}
+    .tc:hover .tc-ov{background:linear-gradient(180deg,rgba(26,18,11,.15) 10%,rgba(26,18,11,.5) 55%,rgba(26,18,11,.94) 100%)}
+    .tc-badge{position:absolute;top:14px;left:14px;z-index:3;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:5px 10px;border-radius:6px;background:rgba(217,123,42,.85);color:#fff;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;transform:translateY(-6px);transition:all .4s cubic-bezier(.22,1,.36,1)}
+    .tc:hover .tc-badge{opacity:1;transform:translateY(0)}
+    .tc-soc{position:absolute;top:14px;right:14px;z-index:3;display:flex;flex-direction:column;gap:8px;opacity:0;transform:translateY(-8px);transition:all .45s cubic-bezier(.22,1,.36,1)}
+    .tc:hover .tc-soc{opacity:1;transform:translateY(0)}
+    .tc-soc a{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);transform:translateX(10px);opacity:0;transition:all .35s cubic-bezier(.22,1,.36,1)}
+    .tc-soc a:nth-child(1){transition-delay:0s}
+    .tc-soc a:nth-child(2){transition-delay:.06s}
+    .tc-soc a:nth-child(3){transition-delay:.12s}
+    .tc:hover .tc-soc a{transform:translateX(0);opacity:1}
+    .tc-soc a:hover{background:#D97B2A;border-color:#D97B2A;color:#fff;transform:translateX(-3px)!important;box-shadow:0 4px 16px rgba(217,123,42,.35);transition-delay:0s!important}
+    .tc-info{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:16px 14px;transition:transform .45s cubic-bezier(.22,1,.36,1)}
+    .tc:hover .tc-info{transform:translateY(-6px)}
+    .tc-info h3{color:#fff;font-size:14px;font-weight:700;letter-spacing:-.01em;line-height:1.2;transition:color .3s}
+    .tc-info p{color:rgba(255,255,255,.6);font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;margin-top:3px;transition:color .3s}
+    .tc:hover .tc-info p{color:rgba(255,255,255,.8)}
+    .tc-line{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#D97B2A,#8B5E3C);transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.22,1,.36,1);z-index:4;border-radius:0 0 0 14px}
+    .tc:hover .tc-line{transform:scaleX(1)}
+    @media(min-width:640px){.tc-info{padding:18px 16px}.tc-info h3{font-size:15px}.tc-info p{font-size:10.5px}.tc-soc a{width:38px;height:38px}}
+    @media(min-width:1024px){.tc-info{padding:20px 18px}.tc-info h3{font-size:15px}.tc-soc a{width:40px;height:40px;border-radius:11px}}
+
+    .partner-card{background:#fff;border:1px solid rgba(42,29,20,.05);border-radius:12px;padding:28px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:155px;transition:all .4s cubic-bezier(.22,1,.36,1);cursor:default}
+    .partner-card:hover{border-color:rgba(217,123,42,.2);box-shadow:0 4px 24px rgba(217,123,42,.06);transform:translateY(-2px)}
+    .partner-logo{height:44px;width:auto;max-width:75%;object-fit:contain;filter:grayscale(100%);opacity:.45;transition:filter .45s ease,opacity .45s ease,transform .45s cubic-bezier(.22,1,.36,1)}
+    .partner-card:hover .partner-logo{filter:grayscale(0%);opacity:1;transform:scale(1.05)}
+    .partner-name{font-size:10.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#9A8E82;margin-top:14px;text-align:center;line-height:1.4;transition:color .3s}
+    .partner-card:hover .partner-name{color:#6B5B4D}
+    @media(min-width:768px){.partner-card{padding:36px 32px;min-height:175px}.partner-logo{height:52px;max-width:70%}.partner-name{font-size:11px;margin-top:16px}}
+
+    .roadmap{position:relative}
+    .roadmap-line{position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent 0%,rgba(217,123,42,.25) 10%,rgba(217,123,42,.25) 90%,transparent 100%);transform:translateX(-50%)}
+    @media(max-width:767px){.roadmap-line{left:20px}}
+    .roadmap-item{position:relative;display:flex;width:100%;margin-bottom:64px}
+    .roadmap-item:last-child{margin-bottom:0}
+    @media(min-width:768px){
+      .roadmap-item{padding:0 48px}
+      .roadmap-item .roadmap-card{width:calc(50% - 40px)}
+      .roadmap-item:nth-child(odd){justify-content:flex-start}
+      .roadmap-item:nth-child(even){justify-content:flex-end}
+    }
+    @media(max-width:767px){
+      .roadmap-item{padding-left:52px;padding-right:0}
+      .roadmap-item .roadmap-card{width:100%!important}
+    }
+    .roadmap-node{position:absolute;left:50%;top:24px;transform:translateX(-50%);width:16px;height:16px;border-radius:50%;background:#D97B2A;border:3px solid #1A120B;box-shadow:0 0 20px rgba(217,123,42,.35),0 0 40px rgba(217,123,42,.1);z-index:2;transition:all .4s}
+    .roadmap-item:hover .roadmap-node{transform:translateX(-50%) scale(1.3);box-shadow:0 0 25px rgba(217,123,42,.5),0 0 50px rgba(217,123,42,.15)}
+    @media(max-width:767px){.roadmap-node{left:20px}}
+    .roadmap-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:all .4s ease;position:relative;overflow:hidden}
+    .roadmap-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(217,123,42,.3),transparent);opacity:0;transition:opacity .4s}
+    .roadmap-card:hover{border-color:rgba(217,123,42,.2);background:rgba(255,255,255,.05);box-shadow:0 10px 40px rgba(217,123,42,.06)}
+    .roadmap-card:hover::before{opacity:1}
+    .roadmap-phase{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#D97B2A;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+    .roadmap-phase-dot{width:6px;height:6px;border-radius:50%;background:#D97B2A;animation:pulse-dot 2s ease-in-out infinite}
+    @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+    .roadmap-card h3{color:#fff;font-size:20px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+    .roadmap-card p{color:rgba(255,255,255,.45);font-size:14px;font-weight:300;line-height:1.7}
+    .roadmap-card:hover p{color:rgba(255,255,255,.6)}
+    .roadmap-icon{position:absolute;top:28px;right:28px;width:40px;height:40px;border-radius:12px;background:rgba(217,123,42,.08);border:1px solid rgba(217,123,42,.12);display:flex;align-items:center;justify-content:center;color:#D97B2A;transition:all .4s}
+    .roadmap-card:hover .roadmap-icon{background:#D97B2A;color:#fff;border-color:#D97B2A;box-shadow:0 4px 16px rgba(217,123,42,.3)}
+
+    .qg{background:linear-gradient(135deg,#D97B2A,#8B5E3C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .fi{transition:border-color .3s,box-shadow .3s}
+    .fi:focus{border-color:rgba(217,123,42,.5);box-shadow:0 0 0 3px rgba(217,123,42,.08)}
+    .fi.err{border-color:rgba(220,60,60,.5);box-shadow:0 0 0 3px rgba(220,60,60,.08)}
+    .f-err{display:none;font-size:11px;color:#dc3c3c;margin-top:4px}
+    .f-err.show{display:block}
+    select.fi{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.3)' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
+    .wa-float{position:fixed;bottom:28px;right:28px;z-index:900;width:56px;height:56px;border-radius:16px;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.3);transition:all .3s cubic-bezier(.22,1,.36,1)}
+    .wa-float:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 8px 30px rgba(37,211,102,.35)}
+    body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.025;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAAAXNSR0IArs4c6QAAIABJREFUeF7tnQl8VNX/xz/fn3Mk5vNJmxyaJBkSCZJUqSIoqgCFfZ0FVdRRVV9AqKoql1qoiqJ6F+KKioIiiCoqr6gBFF1FW3UFEUQbZu8ny/0knlmWTM7Jx7szO7JyZe8+e+3ye+3x/z3NkzJy7v+e85997x73nN+gKz+GnEAAAAASUVORK5CYII=")}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .animate-spin{animation:spin .8s linear infinite}
+    
+    .scramble-text{
+      font-size:clamp(1.6rem,3vw,2.6rem);
+      font-weight:700;
+      letter-spacing:-0.02em;
+      line-height:1.15;
+      color:#D97B2A;
+      height:2.6em;
+      overflow:hidden;
+      white-space:normal;
+      word-break:break-word;
+    }
+    .scramble-char{display:inline-block;transition:color .15s}
+    .scramble-char.scrambling{color:rgba(217,123,42,.3)}
+    .scramble-label{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px}
+    .scramble-label-line{width:24px;height:1px;background:rgba(217,123,42,.3)}
+    .scramble-line{width:0;height:1px;background:linear-gradient(90deg,#D97B2A,transparent);transition:width .8s cubic-bezier(.22,1,.36,1);margin-top:20px}
+    .scramble-line.on{width:80px}
+    .scramble-sub{font-size:14px;font-weight:300;color:rgba(255,255,255,.35);margin-top:12px;max-width:100%;line-height:1.6;height:4.8em;overflow:hidden;opacity:0;transform:translateY(8px);transition:opacity .5s cubic-bezier(.22,1,.36,1),transform .5s cubic-bezier(.22,1,.36,1)}
+    .scramble-sub.on{opacity:1;transform:translateY(0)}
+    .scramble-cursor{display:inline-block;width:3px;height:.85em;background:#D97B2A;margin-left:2px;vertical-align:text-bottom;animation:blink .6s step-end infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+    .skip-link{position:absolute;top:-100%;left:16px;z-index:10000;background:#D97B2A;color:#fff;padding:8px 16px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:top .2s}
+    .skip-link:focus{top:16px}
+
+    .hero-doc{font-family:'Crispy Tacos','Host Grotesk',cursive;font-size:clamp(1.9rem,4.8vw,4.2rem);line-height:1.08;letter-spacing:-0.01em}
+    .hero-line1{white-space:nowrap}
+    .sec-doc{font-family:'Crispy Tacos','Host Grotesk',cursive;font-size:clamp(22px,3.5vw,32px);line-height:1.15;letter-spacing:-0.01em}
+    .sec-doc-dark{font-family:'Crispy Tacos','Host Grotesk',cursive;font-size:clamp(22px,3.5vw,32px);line-height:1.15;letter-spacing:-0.01em;color:#fff}
+    .contact-doc{font-family:'Crispy Tacos','Host Grotesk',cursive;font-size:clamp(26px,4vw,42px);line-height:1.05;letter-spacing:-0.01em;color:#fff}
+
+    .hero-bg-img{
+      position:absolute;inset:0;z-index:0;
+    }
+    .hero-bg-img img{
+      width:100%;height:100%;object-fit:cover;object-position:center center;
+      filter:brightness(0.25) saturate(0.6);
+      transition:transform 12s cubic-bezier(.22,1,.36,1);
+    }
+    .hero-bg-img::after{
+      content:'';position:absolute;inset:0;
+      background:
+        linear-gradient(145deg,rgba(26,18,11,0.88) 0%,rgba(26,18,11,0.55) 35%,rgba(26,18,11,0.4) 55%,rgba(26,18,11,0.75) 100%);
+      z-index:1;
+    }
+    @media(max-width:767px){
+      .hero-bg-img img{object-position:center 30%}
+    }
+
+    .hero-orb{position:absolute;border-radius:50%;pointer-events:none}
+    .hero-orb-1{top:6%;right:4%;width:560px;height:560px;background:radial-gradient(circle,rgba(217,123,42,0.07) 0%,rgba(217,123,42,0.02) 38%,transparent 64%)}
+    .hero-orb-2{bottom:8%;left:2%;width:360px;height:360px;background:radial-gradient(circle,rgba(139,94,60,0.05) 0%,rgba(139,94,60,0.01) 40%,transparent 64%)}
+    .hero-ring{position:absolute;top:14%;right:11%;width:280px;height:280px;border-radius:50%;border:1px solid rgba(217,123,42,0.04);pointer-events:none}
+    .hero-ring-2{position:absolute;top:19%;right:15%;width:190px;height:190px;border-radius:50%;border:1px solid rgba(217,123,42,0.025);pointer-events:none}
+    .hero-ring-dot{position:absolute;top:14%;right:11%;width:5px;height:5px;border-radius:50%;background:rgba(217,123,42,0.1);pointer-events:none}
+    .hero-accent{position:absolute;inset:0;background:linear-gradient(145deg,transparent 25%,rgba(217,123,42,0.01) 48%,transparent 65%);pointer-events:none}
+    .hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 30% 40%,transparent 50%,rgba(10,6,3,0.2) 100%);pointer-events:none}
+    @media(max-width:1024px){.hero-orb-1{width:380px;height:380px;top:4%;right:-2%}.hero-orb-2{width:240px;height:240px}.hero-ring{width:180px;height:180px;top:10%;right:8%}.hero-ring-2{width:120px;height:120px;top:14%;right:11%}.hero-ring-dot{top:10%;right:8%}}
+    @media(max-width:768px){.hero-orb-1{width:260px;height:260px;top:2%;right:-8%}.hero-orb-2{width:160px;height:160px;bottom:15%;left:-8%}.hero-ring,.hero-ring-2,.hero-ring-dot{display:none}}
+  </style>
+</head>
+<body>
+
+  <a href="#about" class="skip-link">Aller au contenu</a>
+  <div class="cur-dot" id="cDot"></div>
+  <div class="cur-ring" id="cRing"></div>
+  <div class="nav-progress" id="navProg"></div>
+
+  <a href="https://wa.me/2290194165705" target="_blank" rel="noopener noreferrer" class="wa-float hov" aria-label="Contacter sur WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- NAVBAR -->
+  <nav class="nav-outer" id="navOuter" aria-label="Navigation principale">
+    <div class="nav-inner top" id="navInner">
+      <a href="#" class="logo-wrap hov" id="logoLink" style="display:flex;align-items:center" aria-label="LE GONG CRÉATIF — Accueil">
+        <img src="uploads/images/Logoblanc.png" alt="" class="logo-dark" style="height:48px;width:auto;object-contain;position:absolute;top:50%;left:0;transform:translateY(-50%)">
+        <img src="uploads/images/Logorvb1.png" alt="" class="logo-light" style="height:48px;width:auto;object-contain">
+        <span style="display:block;height:48px;visibility:hidden;width:clamp(130px,38vw,220px)">LE GONG CRÉATIF</span>
+      </a>
+      <div class="hidden md:flex items-center gap-1">
+        <a href="#about" class="nav-link hov"><span class="nl-text"><span>À propos</span><span>À propos</span></span><span class="nl-line"></span></a>
+        <a href="#services" class="nav-link hov"><span class="nl-text"><span>Services</span><span>Services</span></span><span class="nl-line"></span></a>
+        <a href="#work" class="nav-link hov"><span class="nl-text"><span>Réalisations</span><span>Réalisations</span></span><span class="nl-line"></span></a>
+        <a href="#contact" class="nav-link hov"><span class="nl-text"><span>Contact</span><span>Contact</span></span><span class="nl-line"></span></a>
+      </div>
+      <div class="flex items-center gap-4 flex-shrink-0">
+        <a href="#contact" class="nav-cta hov hidden md:inline-flex" id="navCta"><span>Parlons-en</span><span class="iconify" data-icon="lucide:arrow-right" data-width="14"></span></a>
+        <button class="mob-toggle md:hidden" id="mbtn" aria-label="Menu" aria-expanded="false" aria-controls="mob"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mob" class="fixed inset-0 z-[998] flex flex-col items-center justify-center gap-2 translate-x-full transition-transform duration-500 ease-out" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+    <a href="#" class="mob-link hov mb-3" style="opacity:0;transform:translateY(24px);transition:all .45s cubic-bezier(.22,1,.36,1)" id="mobLogo" aria-label="LE GONG CRÉATIF — Accueil">
+      <img src="uploads/images/Logorvb1.png" alt="" style="height:58px;width:auto;object-contain">
+    </a>
+    <a href="#about" class="mob-link text-[32px] font-bold text-txt hover:text-brand transition-colors hov py-2">À propos</a>
+    <a href="#services" class="mob-link text-[32px] font-bold text-txt hover:text-brand transition-colors hov py-2">Services</a>
+    <a href="#work" class="mob-link text-[32px] font-bold text-txt hover:text-brand transition-colors hov py-2">Réalisations</a>
+    <a href="#contact" class="mob-link text-[32px] font-bold text-txt hover:text-brand transition-colors hov py-2">Contact</a>
+    <a href="#contact" class="mob-cta mt-5 inline-flex items-center gap-2 text-[14px] font-semibold text-white bg-brand px-7 py-3.5 rounded-xl hov">Parlons-en <span class="iconify" data-icon="lucide:arrow-right" data-width="14"></span></a>
+    <div class="mob-socials flex items-center gap-3 mt-6">
+      <a href="#" class="soc-btn soc-btn-light hov" aria-label="Facebook"><span class="iconify" data-icon="mdi:facebook" data-width="21"></span></a>
+      <a href="#" class="soc-btn soc-btn-light hov" aria-label="X / Twitter"><span class="iconify" data-icon="ri:twitter-x-fill" data-width="19"></span></a>
+      <a href="#" class="soc-btn soc-btn-light hov" aria-label="Instagram"><span class="iconify" data-icon="mdi:instagram" data-width="21"></span></a>
+      <a href="#" class="soc-btn soc-btn-light hov" aria-label="LinkedIn"><span class="iconify" data-icon="mdi:linkedin" data-width="21"></span></a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="bg-dark relative overflow-hidden" aria-label="Accueil">
+    <div class="hero-bg-img">
+      <img src="uploads/images/hero-bg.png" alt="" loading="eager">
+    </div>
+    <div class="absolute inset-0 opacity-[0.018] z-[1]" style="background-image:url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cpath d=%22M30 0v60M0 30h60%22 stroke=%22%23fff%22 stroke-width=%22.5%22/%3E%3C/svg%3E')"></div>
+    <div class="hero-orb hero-orb-1" style="z-index:1"></div>
+    <div class="hero-orb hero-orb-2" style="z-index:1"></div>
+    <div class="hero-ring" style="z-index:1"></div>
+    <div class="hero-ring-2" style="z-index:1"></div>
+    <div class="hero-ring-dot" style="z-index:1"></div>
+    <div class="hero-accent" style="z-index:1"></div>
+    <div class="hero-vignette" style="z-index:2"></div>
+
+    <div class="max-w-[1180px] mx-auto px-6 lg:px-10 min-h-[92vh] relative z-10 pt-28 pb-20">
+      <div class="flex flex-col justify-center lg:max-w-[55%] lg:pr-8" style="min-height:calc(92vh - 7rem)">
+        <div class="rv d1"><span class="inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-white/40 mb-10"><span class="ld" id="heroLine"></span>Agence de communication 360</span></div>
+        <h1 class="hero-doc text-white mb-8 rv d2"><span class="hero-line1">On donne vie à</span><br>vos idées<span class="text-brand">.</span></h1>
+        <p class="text-white/50 text-[16px] md:text-[17px] font-light max-w-[420px] leading-relaxed mb-12 rv d3">Stratégie, design et production visuelle pour les marques qui veulent marquer les esprits.</p>
+        <div class="flex flex-wrap items-center gap-4 rv d4">
+          <a href="#work" class="inline-flex items-center gap-2.5 text-[14px] font-semibold text-white bg-brand hover:bg-brand-dark px-7 py-3.5 rounded-lg transition-colors hov">Voir nos projets <span class="iconify" data-icon="lucide:arrow-down-right" data-width="15"></span></a>
+          <a href="#contact" class="inline-flex items-center gap-2 text-[14px] font-medium text-white/55 hover:text-white border border-white/[0.08] hover:border-white/20 px-7 py-3.5 rounded-lg transition-all hov">Nous contacter</a>
+        </div>
+      </div>
+      <div class="hidden lg:flex flex-col items-start justify-center w-[360px] xl:w-[420px] rv-r d3" id="scrambleBlock" style="position:absolute;right:40px;top:50%;transform:translateY(-50%)">
+        <div><div class="scramble-label"><span class="scramble-label-line"></span>Notre expertise</div><div class="scramble-text" id="scrambleText"><span class="scramble-cursor"></span></div><div class="scramble-line" id="scrambleLine"></div><p class="scramble-sub" id="scrambleSub"></p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-24 md:py-32 px-6 lg:px-10" aria-label="À propos">
+    <div class="max-w-[1180px] mx-auto">
+      <div class="grid lg:grid-cols-12 gap-14 lg:gap-10">
+        <div class="lg:col-span-5 rv-l"><span class="text-[11px] font-bold uppercase tracking-[0.25em] text-brand mb-4 block">Qui sommes-nous</span><h2 class="sec-doc">Une agence qui<br>pense différent<span class="text-brand">.</span></h2></div>
+        <div class="lg:col-span-6 lg:col-start-7 rv-r">
+          <p class="text-sub text-[15px] font-light leading-[1.75] mb-4">LE GONG CRÉATIF est une agence de communication visuelle basée au Bénin. Depuis 2019, nous accompagnons startups, PME et institutions dans la construction d'une identité forte et cohérente.</p>
+          <p class="text-faint text-[14px] font-light leading-[1.75] mb-10">Notre approche : comprendre votre vision, puis la traduire en design qui fonctionne. Pas d'effets de style sans fondement — du sens, de la clarté, de l'impact.</p>
+          <div class="grid grid-cols-3 gap-8 pt-8 border-t border-line">
+            <div class="rv d1"><span class="stg text-[34px] md:text-[42px] font-bold leading-none" data-count="87">0</span><span class="stg text-[34px] md:text-[42px] font-bold">+</span><p class="text-[11px] text-sub mt-2 uppercase tracking-wider font-medium">Projets</p></div>
+            <div class="rv d2"><span class="stg text-[34px] md:text-[42px] font-bold leading-none" data-count="42">0</span><p class="text-[11px] text-sub mt-2 uppercase tracking-wider font-medium">Clients</p></div>
+            <div class="rv d3"><span class="stg text-[34px] md:text-[42px] font-bold leading-none" data-count-since="2019">0</span><p class="text-[11px] text-sub mt-2 uppercase tracking-wider font-medium">Années</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="py-24 md:py-32 px-6 lg:px-10 bg-white" aria-label="Services">
+    <div class="max-w-[1180px] mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 md:mb-18 gap-4">
+        <div class="rv"><span class="text-[11px] font-bold uppercase tracking-[0.25em] text-brand mb-4 block">Services</span><h2 class="sec-doc">Ce qu'on fait de mieux</h2></div>
+        <p class="text-sub text-[13px] max-w-[260px] rv d2">Chaque service est pensé pour répondre à un besoin réel de votre marque.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="sc rv d1 hov"><div class="sc-bg"><img src="uploads/images/prodvisuelle.jpg" alt="Communication Stratégique" loading="lazy"></div><div class="sc-content"><div class="flex items-start justify-between mb-6"><div class="si w-12 h-12 rounded-xl border border-white/15 bg-white/10 text-brand-brown-dk flex items-center justify-center backdrop-blur-sm"><span class="iconify" data-icon="lucide:megaphone" data-width="21"></span></div><span class="sa text-white"><span class="iconify" data-icon="lucide:arrow-up-right" data-width="17"></span></span></div><h3 class="text-[17px] font-bold mb-2">Communication Stratégique</h3><p class="text-[13.5px] font-light leading-relaxed mb-5">Stratégies de communication digitale, corporate et de crise pour renforcer votre image, engager votre audience et protéger votre réputation.</p><div class="flex flex-wrap gap-2 mt-auto"><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Digitale</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Corporate</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Gestion de crise</span></div></div></div>
+        <div class="sc rv d2 hov"><div class="sc-bg"><img src="uploads/images/idmarq.jpg" alt="Identité de marque" loading="lazy"></div><div class="sc-content"><div class="flex items-start justify-between mb-6"><div class="si w-12 h-12 rounded-xl border border-white/15 bg-white/10 text-brand flex items-center justify-center backdrop-blur-sm"><span class="iconify" data-icon="lucide:diamond" data-width="21"></span></div><span class="sa text-white"><span class="iconify" data-icon="lucide:arrow-up-right" data-width="17"></span></span></div><h3 class="text-[17px] font-bold mb-2">Identité de marque</h3><p class="text-[13.5px] font-light leading-relaxed mb-5">Logo, charte graphique, papeterie, guidelines : tout pour que votre marque soit immédiatement reconnaissable.</p><div class="flex flex-wrap gap-2 mt-auto"><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Logo</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Charte graphique</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Brand book</span></div></div></div>
+        <div class="sc rv d3 hov"><div class="sc-bg"><img src="uploads/images/digital.jpg" alt="Design digital" loading="lazy"></div><div class="sc-content"><div class="flex items-start justify-between mb-6"><div class="si w-12 h-12 rounded-xl border border-white/15 bg-white/10 text-brand-brown flex items-center justify-center backdrop-blur-sm"><span class="iconify" data-icon="lucide:layout-dashboard" data-width="21"></span></div><span class="sa text-white"><span class="iconify" data-icon="lucide:arrow-up-right" data-width="17"></span></span></div><h3 class="text-[17px] font-bold mb-2">Design digital</h3><p class="text-[13.5px] font-light leading-relaxed mb-5">Sites web, landing pages, applications : des interfaces qui allient esthétique et performance.</p><div class="flex flex-wrap gap-2 mt-auto"><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Site web</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">UI/UX</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Application</span></div></div></div>
+        <div class="sc rv d4 hov"><div class="sc-bg"><video src="uploads/images/motiondisign.mp4" autoplay muted loop playsinline class="w-full h-full object-cover"></video></div><div class="sc-content"><div class="flex items-start justify-between mb-6"><div class="si w-12 h-12 rounded-xl border border-white/15 bg-white/10 text-brand-dark flex items-center justify-center backdrop-blur-sm"><span class="iconify" data-icon="lucide:film" data-width="21"></span></div><span class="sa text-white"><span class="iconify" data-icon="lucide:arrow-up-right" data-width="17"></span></span></div><h3 class="text-[17px] font-bold mb-2">Production audiovisuelle et Motion</h3><p class="text-[13.5px] font-light leading-relaxed mb-5">Vidéos, animations, photographie et direction artistique : du contenu visuel et en mouvement qui capte, raconte et renforce votre communication.</p><div class="flex flex-wrap gap-2 mt-auto"><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Vidéo</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Animation</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Photo</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Dir. artistique</span></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" class="py-24 md:py-32 px-6 lg:px-10" aria-label="Réalisations">
+    <div class="max-w-[1180px] mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 md:mb-18 gap-4">
+        <div class="rv"><span class="text-[11px] font-bold uppercase tracking-[0.25em] text-brand mb-4 block">Réalisations</span><h2 class="sec-doc">Projets récents</h2></div>
+        <a href="projets.html" class="group inline-flex items-center gap-2 text-[13px] font-semibold text-sub hover:text-brand transition-colors rv d2 hov">Tous les projets <span class="iconify transition-transform group-hover:translate-x-0.5" data-icon="lucide:arrow-right" data-width="14"></span></a>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="pc rv d1 hov"><div class="relative aspect-[4/3]"><img src="uploads/images/id1.jpg" alt="Afrika Fashion Week" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Branding</span><h3 class="pp text-[19px] font-bold text-white">APSI-GA</h3><p class="pp text-[12.5px] text-white/55 mt-1">Identité visuelle complète</p></div></div></div>
+        <div class="pc rv d2 hov"><div class="relative aspect-[4/3]"><img src="uploads/images/id2.jpg" alt="Ci Gusta" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Ci Gusta</h3><p class="pp text-[12.5px] text-white/55 mt-1">Cover musicale</p></div></div></div>
+        <div class="pc rv d3 hov"><div class="relative aspect-[4/3]"><img src="uploads/images/id3.jpg" alt="Ouidah Festival" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-dark mb-2">Motion Design</span><h3 class="pp text-[19px] font-bold text-white">Réduction GeniComp</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche promotionnelle</p></div></div></div>
+        <div class="pc rv d4 hov"><div class="relative aspect-[4/3]"><img src="uploads/images/id4.jpg" alt="Diaspora Chronicles" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">SAEB Coming Soon</h3><p class="pp text-[12.5px] text-white/55 mt-1">Annonce d'ouverture</p></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section id="partners" class="py-24 md:py-32 px-6 lg:px-10 bg-white" aria-label="Partenaires">
+    <div class="max-w-[1180px] mx-auto">
+      <div class="text-center mb-14 md:mb-18 rv"><span class="text-[11px] font-bold uppercase tracking-[0.25em] text-brand mb-4 block">Partenaires</span><h2 class="sec-doc">Ils nous font confiance</h2><p class="text-sub text-[14px] font-light mt-4 max-w-[380px] mx-auto leading-relaxed">Des organisations qui partagent notre vision de l'excellence créative.</p></div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
+        <div class="partner-card rv d1"><img src="uploads/images/cesia.png" alt="CESIA" class="partner-logo" loading="lazy"><p class="partner-name">CESIA</p></div>
+        <div class="partner-card rv d2"><img src="uploads/images/apsi.png" alt="APSI-GA" class="partner-logo" loading="lazy"><p class="partner-name">APSI-GA</p></div>
+        <div class="partner-card rv d3"><img src="uploads/images/dstrust.png" alt="DSTRUST" class="partner-logo" loading="lazy"><p class="partner-name">DSTRUST</p></div>
+        <div class="partner-card rv d1"><img src="uploads/images/elyon.png" alt="Elyon Agro" class="partner-logo" loading="lazy"><p class="partner-name">Elyon Agro</p></div>
+        <div class="partner-card rv d2"><img src="uploads/images/isoc.png" alt="Internet Society Bénin" class="partner-logo" loading="lazy"><p class="partner-name">Internet Society Bénin</p></div>
+        <div class="partner-card rv d3"><img src="uploads/images/light.png" alt="LIGHT Innovation" class="partner-logo" loading="lazy"><p class="partner-name">LIGHT Innovation</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS / ROADMAP -->
+  <section id="process" class="py-24 md:py-32 px-6 lg:px-10 bg-dark relative overflow-hidden" aria-label="Processus de travail">
+    <div class="absolute inset-0 opacity-[0.015]" style="background-image:url('data:image/svg+xml,%3Csvg width=%2240%22 height=%2240%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cpath d=%22M0 20h40M20 0v40%22 stroke=%22%23fff%22 stroke-width=%22.5%22/%3E%3C/svg%3E')"></div>
+    <div class="absolute top-[10%] left-[5%] w-[400px] h-[400px] rounded-full pointer-events:none" style="background:radial-gradient(circle,rgba(217,123,42,0.04) 0%,transparent 60%)"></div>
+    <div class="absolute bottom-[10%] right-[5%] w-[350px] h-[350px] rounded-full pointer-events:none" style="background:radial-gradient(circle,rgba(139,94,60,0.03) 0%,transparent 60%)"></div>
+    <div class="max-w-[1180px] mx-auto relative z-10">
+      <div class="text-center mb-16 md:mb-20 rv">
+        <span class="text-[11px] font-bold uppercase tracking-[0.25em] text-brand mb-4 block">Processus</span>
+        <h2 class="sec-doc-dark">Comment on travaille<span class="text-brand">.</span></h2>
+        <p class="text-white/35 text-[14px] font-light mt-4 max-w-[380px] mx-auto leading-relaxed">Un processus clair en quatre étapes pour transformer votre vision en réalité.</p>
+      </div>
+      <div class="roadmap">
+        <div class="roadmap-line"></div>
+        <div class="roadmap-item rv-l d1"><div class="roadmap-node"></div><div class="roadmap-card hov"><div class="roadmap-icon"><span class="iconify" data-icon="lucide:ear" data-width="18"></span></div><div class="roadmap-phase"><span class="roadmap-phase-dot"></span>Phase 01</div><h3>Écoute</h3><p>On prend le temps de comprendre votre vision, votre marché et vos enjeux. Chaque projet commence par une conversation honnête.</p></div></div>
+        <div class="roadmap-item rv-r d2"><div class="roadmap-node"></div><div class="roadmap-card hov"><div class="roadmap-icon"><span class="iconify" data-icon="lucide:compass" data-width="18"></span></div><div class="roadmap-phase"><span class="roadmap-phase-dot"></span>Phase 02</div><h3>Stratégie</h3><p>On définit une direction créative alignée avec vos objectifs business. Pas de design sans intention — chaque choix est réfléchi.</p></div></div>
+        <div class="roadmap-item rv-l d3"><div class="roadmap-node"></div><div class="roadmap-card hov"><div class="roadmap-icon"><span class="iconify" data-icon="lucide:pen-tool" data-width="18"></span></div><div class="roadmap-phase"><span class="roadmap-phase-dot"></span>Phase 03</div><h3>Création</h3><p>On conçoit, on itère, on affine jusqu'à ce que ce soit parfait. Votre feedback est au cœur de chaque étape du processus.</p></div></div>
+        <div class="roadmap-item rv-r d4"><div class="roadmap-node"></div><div class="roadmap-card hov"><div class="roadmap-icon"><span class="iconify" data-icon="lucide:rocket" data-width="18"></span></div><div class="roadmap-phase"><span class="roadmap-phase-dot"></span>Phase 04</div><h3>Livraison</h3><p>Fichiers optimisés, documentation claire, suivi post-livraison. Votre projet est entre de bonnes mains, même après le lancement.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team" class="py-24 md:py-32 px-6 lg:px-10 bg-dark" aria-label="L'équipe" style="background:#15100A">
+    <div class="max-w-[1180px] mx-auto">
+      <div class="text-center mb-14 md:mb-18 rv">
+        <span class="text-[11px] font-bold uppercase tracking-[0.25em] text-brand mb-4 block">L'équipe</span>
+        <h2 class="sec-doc-dark">Les esprits derrière le gong<span class="text-brand">.</span></h2>
+        <p class="text-white/35 text-[14px] font-light mt-4 max-w-[340px] mx-auto leading-relaxed">Cinq profils complémentaires, un seul objectif : l'excellence créative.</p>
+      </div>
+      <div class="tg">
+        <div class="tc rv d1"><div class="tc-img"><img src="uploads/images/team1.jpg" alt="Tanguy BARA" loading="lazy"></div><div class="tc-ov"></div><div class="tc-badge">Gongoneur</div><div class="tc-soc"><a href="https://www.facebook.com/share/1KKtmEs4cx/?mibextid=wwXIfr" aria-label="Facebook de Baraka"><span class="iconify" data-icon="mdi:facebook" data-width="16"></span></a><a href="#" aria-label="Email de Baraka"><span class="iconify" data-icon="lucide:mail" data-width="14"></span></a><a href="https://www.linkedin.com/in/baratanguy?utm_source=share_via&utm_content=profile&utm_medium=member_ios" aria-label="LinkedIn de Baraka"><span class="iconify" data-icon="mdi:linkedin" data-width="16"></span></a></div><div class="tc-info"><h3>Tanguy BARA</h3><p>Visual Designer- Consultant en Communication</p></div><div class="tc-line"></div></div>
+        <div class="tc rv d2"><div class="tc-img"><img src="uploads/images/team2.jpeg" alt="Raïssa CAKPO" loading="lazy"></div><div class="tc-ov"></div><div class="tc-soc"><a href="https://www.facebook.com/raissa.idunuoluwa.cakpo" aria-label="Facebook de Raïssa"><span class="iconify" data-icon="mdi:facebook" data-width="16"></span></a><a href="#" aria-label="Email de Raïssa"><span class="iconify" data-icon="lucide:mail" data-width="14"></span></a><a href="https://www.linkedin.com/in/ra%C3%AFssa-cakpo-b68690328/" aria-label="LinkedIn de Raïssa"><span class="iconify" data-icon="mdi:linkedin" data-width="16"></span></a></div><div class="tc-info"><h3>Raïssa CAKPO</h3><p>Social Media Manager - Digital Strategist</p></div><div class="tc-line"></div></div>
+        <div class="tc rv d3"><div class="tc-img"><img src="uploads/images/team3.jpeg" alt="Kamal KAKPO" loading="lazy"></div><div class="tc-ov"></div><div class="tc-soc"><a href="https://www.facebook.com/kakpokamal" aria-label="Facebook de Kamal"><span class="iconify" data-icon="mdi:facebook" data-width="16"></span></a><a href="#" aria-label="Email de Kamal"><span class="iconify" data-icon="lucide:mail" data-width="14"></span></a><a href="https://www.linkedin.com/feed/" aria-label="LinkedIn de Kamal"><span class="iconify" data-icon="mdi:linkedin" data-width="16"></span></a></div><div class="tc-info"><h3>Kamal KAKPO</h3><p>Designer 360</p></div><div class="tc-line"></div></div>
+        <div class="tc rv d4"><div class="tc-img"><img src="uploads/images/team4.jpeg" alt="Nadjath KORA" loading="lazy"></div><div class="tc-ov"></div><div class="tc-soc"><a href="https://www.facebook.com/nadji.issiakou" aria-label="Facebook de Nadjath"><span class="iconify" data-icon="mdi:facebook" data-width="16"></span></a><a href="#" aria-label="Email de Nadjath"><span class="iconify" data-icon="lucide:mail" data-width="14"></span></a><a href="#" aria-label="LinkedIn de Nadjath"><span class="iconify" data-icon="mdi:linkedin" data-width="16"></span></a></div><div class="tc-info"><h3>Nadjath Berkêgui KORA</h3><p>Designer Graphique</p></div><div class="tc-line"></div></div>
+        <div class="tc rv d5"><div class="tc-img"><img src="uploads/images/team5.jpeg" alt="Moïse BATCHO" loading="lazy"></div><div class="tc-ov"></div><div class="tc-soc"><a href="https://www.facebook.com/share/1EmV2FM5Qm/" aria-label="Facebook de Moïse"><span class="iconify" data-icon="mdi:facebook" data-width="16"></span></a><a href="#" aria-label="Email de Moïse"><span class="iconify" data-icon="lucide:mail" data-width="14"></span></a><a href="https://www.linkedin.com/in/mo%C3%AFse-batcho-5076a4186/" aria-label="LinkedIn de Moïse"><span class="iconify" data-icon="mdi:linkedin" data-width="16"></span></a></div><div class="tc-info"><h3>Moïse BATCHO</h3><p>Développeur - Spécialiste Audit et Sécurité SI</p></div><div class="tc-line"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="py-24 md:py-32 px-6 lg:px-10" aria-label="Témoignage">
+    <div class="max-w-[740px] mx-auto text-center rv">
+      <span class="qg text-[60px] leading-none" aria-hidden="true">"</span>
+      <blockquote class="text-[19px] md:text-[24px] font-light leading-[1.55] tracking-tight text-txt -mt-3 mb-9">LE GONG CRÉATIF a su capter l'essence de notre festival et la traduire en une identité visuelle puissante. Un travail remarquable.</blockquote>
+      <div class="flex items-center justify-center gap-3">
+        <img src="uploads/images/temoin.jpg" alt="" class="w-10 h-10 rounded-full object-cover" loading="lazy">
+        <div class="text-left"><p class="text-[13px] font-semibold">Marcoss Allassani</p><p class="text-[11.5px] text-sub">Directeur, Ouidah Festival</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-24 md:py-32 px-6 lg:px-10 bg-dark" aria-label="Contact">
+    <div class="max-w-[1180px] mx-auto">
+      <div class="grid lg:grid-cols-12 gap-16">
+        <div class="lg:col-span-5 rv-l">
+          <span class="text-[11px] font-bold uppercase tracking-[0.25em] text-brand mb-4 block">Contact</span>
+          <h2 class="contact-doc mb-6">Parlons de votre<br>projet<span class="text-brand">.</span></h2>
+          <p class="text-white/50 text-[14.5px] font-light leading-relaxed mb-10 max-w-[320px]">Décrivez-nous votre idée. On vous répond sous 24h avec une première proposition.</p>
+          <div class="space-y-4 mb-11">
+            <a href="https://wa.me/2290194165705" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-white/50 hover:text-[#25D366] transition-colors hov"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span class="text-[13.5px]">+229 01 94 16 57 05</span></a>
+            <a href="mailto:baraddt@gmail.com" class="flex items-center gap-3 text-white/50 hover:text-brand transition-colors hov"><span class="iconify" data-icon="lucide:mail" data-width="15" aria-hidden="true"></span><span class="text-[13.5px]">baraddt@gmail.com</span></a>
+            <span class="flex items-center gap-3 text-white/40"><span class="iconify" data-icon="lucide:map-pin" data-width="15" aria-hidden="true"></span><span class="text-[13.5px]">Bénin</span></span>
+          </div>
+          <div class="flex gap-2.5">
+            <a href="#" class="soc-btn soc-btn-dark hov" aria-label="Facebook"><span class="iconify" data-icon="mdi:facebook" data-width="18"></span></a>
+            <a href="#" class="soc-btn soc-btn-dark hov" aria-label="X / Twitter"><span class="iconify" data-icon="ri:twitter-x-fill" data-width="16"></span></a>
+            <a href="#" class="soc-btn soc-btn-dark hov" aria-label="Instagram"><span class="iconify" data-icon="mdi:instagram" data-width="18"></span></a>
+            <a href="#" class="soc-btn soc-btn-dark hov" aria-label="LinkedIn"><span class="iconify" data-icon="mdi:linkedin" data-width="18"></span></a>
+          </div>
+        </div>
+        <div class="lg:col-span-6 lg:col-start-7 rv-r">
+          <form id="cform" class="space-y-4" novalidate>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div><label for="fname" class="text-[11px] font-semibold uppercase tracking-wider text-white/40 mb-1.5 block">Nom <span aria-hidden="true" class="text-brand">*</span></label><input type="text" id="fname" name="name" required placeholder="Votre nom" class="fi w-full bg-white/[0.04] border border-white/[0.07] rounded-lg px-4 py-3 text-[13.5px] text-white placeholder:text-white/30 focus:outline-none"><p class="f-err" id="fname-err">Veuillez entrer votre nom.</p></div>
+              <div><label for="fphone" class="text-[11px] font-semibold uppercase tracking-wider text-white/40 mb-1.5 block">Téléphone</label><input type="tel" id="fphone" name="phone" placeholder="+229 ..." class="fi w-full bg-white/[0.04] border border-white/[0.07] rounded-lg px-4 py-3 text-[13.5px] text-white placeholder:text-white/30 focus:outline-none"></div>
+            </div>
+            <div><label for="femail" class="text-[11px] font-semibold uppercase tracking-wider text-white/40 mb-1.5 block">Email <span aria-hidden="true" class="text-brand">*</span></label><input type="email" id="femail" name="email" required placeholder="votre@email.com" class="fi w-full bg-white/[0.04] border border-white/[0.07] rounded-lg px-4 py-3 text-[13.5px] text-white placeholder:text-white/30 focus:outline-none"><p class="f-err" id="femail-err">Veuillez entrer un email valide.</p></div>
+            <div><label for="fservice" class="text-[11px] font-semibold uppercase tracking-wider text-white/40 mb-1.5 block">Type de projet</label><select id="fservice" name="service" class="fi w-full bg-white/[0.04] border border-white/[0.07] rounded-lg px-4 py-3 text-[13.5px] text-white/40 focus:outline-none appearance-none"><option value="" class="bg-dark">Choisir un service</option><option value="comstrat" class="bg-dark">Communication Stratégique</option><option value="brand" class="bg-dark">Identité de marque</option><option value="digital" class="bg-dark">Design digital</option><option value="audiovisual-motion" class="bg-dark">Production audiovisuelle et Motion</option></select></div>
+            <div><label for="fmessage" class="text-[11px] font-semibold uppercase tracking-wider text-white/40 mb-1.5 block">Message <span aria-hidden="true" class="text-brand">*</span></label><textarea id="fmessage" name="message" rows="4" required placeholder="Décrivez votre projet..." class="fi w-full bg-white/[0.04] border border-white/[0.07] rounded-lg px-4 py-3 text-[13.5px] text-white placeholder:text-white/30 focus:outline-none resize-none"></textarea><p class="f-err" id="fmessage-err">Veuillez décrire votre projet.</p></div>
+            <button type="submit" id="fbtn" class="w-full flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-semibold text-[14px] py-3.5 rounded-lg transition-colors hov">Envoyer <span class="iconify" data-icon="lucide:send" data-width="14"></span></button>
+            <div id="fok" class="hidden items-center gap-2 text-brand text-[13px] font-medium"><span class="iconify" data-icon="lucide:check-circle" data-width="15"></span>Message envoyé. On revient vers vous rapidement.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-dark border-t border-white/[0.04] py-9 px-6 lg:px-10" role="contentinfo">
+    <div class="max-w-[1180px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <a href="#" class="hov flex items-center" id="footerLogo" aria-label="LE GONG CRÉATIF — Retour en haut">
+        <img src="uploads/images/footer-logo.png" alt="" style="height:40px;width:auto;object-contain;opacity:.55;transition:opacity .3s" onmouseenter="this.style.opacity='.8'" onmouseleave="this.style.opacity='.55'">
+      </a>
+      <div class="flex items-center gap-2">
+        <a href="#" class="soc-btn soc-btn-dark hov" style="width:32px;height:32px;border-radius:8px" aria-label="Facebook"><span class="iconify" data-icon="mdi:facebook" data-width="15"></span></a>
+        <a href="#" class="soc-btn soc-btn-dark hov" style="width:32px;height:32px;border-radius:8px" aria-label="X / Twitter"><span class="iconify" data-icon="ri:twitter-x-fill" data-width="13"></span></a>
+        <a href="#" class="soc-btn soc-btn-dark hov" style="width:32px;height:32px;border-radius:8px" aria-label="Instagram"><span class="iconify" data-icon="mdi:instagram" data-width="15"></span></a>
+        <a href="#" class="soc-btn soc-btn-dark hov" style="width:32px;height:32px;border-radius:8px" aria-label="LinkedIn"><span class="iconify" data-icon="mdi:linkedin" data-width="15"></span></a>
+      </div>
+      <div class="flex items-center gap-5">
+        <span class="text-[11.5px] text-white/25">© <span id="fYear"></span> LE GONG CRÉATIF</span>
+        <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="w-7 h-7 rounded-md border border-white/[0.07] flex items-center justify-center text-white/30 hover:text-brand hover:border-brand/25 transition-all hov" aria-label="Retour en haut"><span class="iconify" data-icon="lucide:arrow-up" data-width="11"></span></button>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('fYear').textContent = new Date().getFullYear();
+    const dot = document.getElementById('cDot'), ring = document.getElementById('cRing');
+    if (window.matchMedia('(pointer:fine)').matches) {
+      let mx = 0, my = 0, rx = 0, ry = 0;
+      document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx - 4 + 'px'; dot.style.top = my - 4 + 'px' });
+      (function lp() { rx += (mx - rx) * .12; ry += (my - ry) * .12; ring.style.left = rx - 20 + 'px'; ring.style.top = ry - 20 + 'px'; requestAnimationFrame(lp) })();
+      document.querySelectorAll('.hov').forEach(el => { el.addEventListener('mouseenter', () => ring.classList.add('hov')); el.addEventListener('mouseleave', () => ring.classList.remove('hov')) });
+      document.addEventListener('mousedown', () => ring.classList.add('click'));
+      document.addEventListener('mouseup', () => ring.classList.remove('click'));
+      document.addEventListener('mouseleave', () => { dot.classList.add('hide'); ring.classList.add('hide') });
+      document.addEventListener('mouseenter', () => { dot.classList.remove('hide'); ring.classList.remove('hide') });
+    }
+    const cta = document.getElementById('navCta');
+    if (cta) { let ctaActive = false; cta.addEventListener('mouseenter', () => ctaActive = true); cta.addEventListener('mouseleave', () => { ctaActive = false; cta.style.transform = 'translate(0,0)' }); cta.addEventListener('mousemove', e => { if (!ctaActive) return; const r = cta.getBoundingClientRect(); cta.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .18}px,${(e.clientY - r.top - r.height / 2) * .18}px)` }); }
+    const navO = document.getElementById('navOuter'), navI = document.getElementById('navInner'), prog = document.getElementById('navProg');
+    let lastS = 0, ht;
+    window.addEventListener('scroll', () => { const s = window.scrollY, t = document.body.scrollHeight - window.innerHeight; prog.style.width = Math.min(s / t * 100, 100) + '%'; if (s > 60) { navI.classList.remove('top'); navI.classList.add('scrolled') } else { navI.classList.add('top'); navI.classList.remove('scrolled') } clearTimeout(ht); if (s > lastS && s > 350) navO.classList.add('hide'); else if (s < lastS) navO.classList.remove('hide'); ht = setTimeout(() => navO.classList.remove('hide'), 350); lastS = s; }, { passive: true });
+    document.getElementById('logoLink').addEventListener('click', e => { if (window.scrollY > 200) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) } });
+    document.getElementById('footerLogo').addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) });
+    const mb = document.getElementById('mbtn'), mo = document.getElementById('mob'); let mop = false;
+    function closeMob() { mop = false; mo.style.transform = 'translateX(100%)'; mo.classList.remove('open'); mb.classList.remove('open'); mb.setAttribute('aria-expanded', 'false'); document.body.style.overflow = '' }
+    mb.addEventListener('click', () => { mop = !mop; mb.setAttribute('aria-expanded', mop); if (mop) { mo.style.transform = 'translateX(0)'; mo.classList.add('open'); mb.classList.add('open'); document.body.style.overflow = 'hidden' } else closeMob(); });
+    document.querySelectorAll('.mob-link,.mob-cta').forEach(l => l.addEventListener('click', closeMob));
+    document.getElementById('mobLogo').addEventListener('click', e => { e.preventDefault(); closeMob(); setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100) });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && mop) closeMob() });
+    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); e.target.querySelectorAll('[data-count]').forEach(c => { if (c.dataset.done) return; c.dataset.done = '1'; const target = +c.dataset.count; let n = 0; const step = Math.max(1, Math.ceil(target / 40)); const delay = target < 20 ? 80 : 25; const iv = setInterval(() => { n += step; if (n >= target) { n = target; clearInterval(iv) } c.textContent = n }, delay); }); e.target.querySelectorAll('[data-count-since]').forEach(c => { if (c.dataset.done) return; c.dataset.done = '1'; const target = new Date().getFullYear() - +c.dataset.countSince; let n = 0; const iv = setInterval(() => { n++; if (n >= target) { n = target; clearInterval(iv) } c.textContent = n }, 300); }); } }); }, { threshold: 0.12, rootMargin: '0px 0px -25px 0px' });
+    document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el => obs.observe(el));
+    setTimeout(() => document.getElementById('heroLine')?.classList.add('on'), 500);
+
+    class TextScramble {
+      constructor(el) { this.el = el; this.chars = '!<>-_\\/[]{}—=+*^?#═░▒▓█abcdefghijklmnopqrstuvwxyz'; this.queue = []; this.frame = 0; this.frameRequest = null; this.resolve = null }
+      setText(newText) { const oldText = this.el.innerText; const length = Math.max(oldText.length, newText.length); this.queue = []; for (let i = 0; i < length; i++) { const from = oldText[i] || '', to = newText[i] || '', start = Math.floor(Math.random() * 20), end = start + Math.floor(Math.random() * 20); this.queue.push({ from, to, start, end }) } cancelAnimationFrame(this.frameRequest); this.frame = 0; this.update(); return new Promise(r => this.resolve = r); }
+      update() { let output = ''; let complete = 0; for (let i = 0; i < this.queue.length; i++) { let { from, to, start, end, char } = this.queue[i]; if (this.frame >= end) { complete++; output += to } else if (this.frame >= start) { if (!char || Math.random() < .28) { char = this.randomChar(); this.queue[i].char = char } output += `<span class="scramble-char scrambling">${char}</span>` } else { output += from } } this.el.innerHTML = output + '<span class="scramble-cursor"></span>'; if (complete === this.queue.length) { if (this.resolve) this.resolve() } else { this.frameRequest = requestAnimationFrame(() => this.update()); this.frame++ } }
+      randomChar() { return this.chars[Math.floor(Math.random() * this.chars.length)] }
+    }
+
+    const phrases = [
+      { text: 'Communication Stratégique', sub: 'Stratégies digitale, corporate et de crise pour renforcer votre image et protéger votre réputation.' },
+      { text: 'Identité de marque', sub: 'Logo, charte graphique, brand book : votre marque, reconnaissable au premier regard.' },
+      { text: 'Design digital', sub: 'Sites web, landing pages, applications : des interfaces esthétiques et performantes.' },
+      { text: 'Production audiovisuelle et Motion', sub: 'Vidéos, animations, photographie et direction artistique : du contenu qui capte et raconte.' },
+      { text: 'Stratégie créative', sub: 'Positionnement, tonalité, storytelling : une direction claire avant le premier pixel.' }
+    ];
+    const scrambleEl = document.getElementById('scrambleText'), scrambleLine = document.getElementById('scrambleLine'), scrambleSub = document.getElementById('scrambleSub'), scrambleBlock = document.getElementById('scrambleBlock');
+    if (scrambleEl) {
+      const fx = new TextScramble(scrambleEl); let counter = 0;
+      const scrambleObs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { scrambleObs.unobserve(e.target); setTimeout(() => { scrambleLine.classList.add('on'); const next = () => { const phrase = phrases[counter]; fx.setText(phrase.text).then(() => { scrambleSub.classList.remove('on'); setTimeout(() => { scrambleSub.textContent = phrase.sub; scrambleSub.classList.add('on') }, 100); }); counter = (counter + 1) % phrases.length; }; next(); setInterval(next, 3200); }, 600); } }); }, { threshold: 0.3 });
+      scrambleObs.observe(scrambleBlock);
+    }
+
+    document.getElementById('cform').addEventListener('submit', function (e) {
+      e.preventDefault(); const form = this; const nameEl = form.name, emailEl = form.email, phoneEl = form.phone, servEl = form.service, msgEl = form.message; const btn = document.getElementById('fbtn'), okMsg = document.getElementById('fok'), errMsg = document.getElementById('ferr');
+      let valid = true; form.querySelectorAll('.fi').forEach(f => f.classList.remove('err')); form.querySelectorAll('.f-err').forEach(f => f.classList.remove('show')); if (errMsg) { errMsg.classList.add('hidden'); errMsg.classList.remove('flex'); }
+      if (!nameEl.value.trim()) { nameEl.classList.add('err'); document.getElementById('fname-err').classList.add('show'); valid = false } const emailVal = emailEl.value.trim(); if (!emailVal || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) { emailEl.classList.add('err'); document.getElementById('femail-err').classList.add('show'); valid = false } if (!msgEl.value.trim()) { msgEl.classList.add('err'); document.getElementById('fmessage-err').classList.add('show'); valid = false } if (!valid) return;
+      const serviceLabels = { 'comstrat': 'Communication Stratégique', 'brand': 'Identité de marque', 'digital': 'Design digital', 'audiovisual-motion': 'Production audiovisuelle et Motion' }; const serviceLabel = serviceLabels[servEl.value] || 'Non spécifié'; const subject = `🔔 Nouveau message depuis LE GONG CRÉATIF — ${nameEl.value.trim()}`;
+      btn.disabled = true; btn.innerHTML = '<span class="iconify animate-spin" data-icon="lucide:loader-2" data-width="14"></span> Envoi en cours...';
+      fetch('https://formsubmit.co/ajax/baraddt@gmail.com', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ name: nameEl.value.trim(), email: emailVal, phone: phoneEl.value.trim() || 'Non renseigné', service: serviceLabel, message: msgEl.value.trim(), _subject: subject, _template: 'table', _captcha: 'false' }) })
+      .then(response => response.json()).then(data => { if (data.success) { okMsg.classList.remove('hidden'); okMsg.classList.add('flex'); form.reset(); servEl.classList.remove('err'); servEl.style.color = ''; } else { throw new Error(data.message || 'Erreur serveur') } })
+      .catch(error => { console.error('Erreur envoi:', error); if (errMsg) { errMsg.classList.remove('hidden'); errMsg.classList.add('flex') } else { const errDiv = document.createElement('div'); errDiv.id = 'ferr'; errDiv.className = 'flex items-center gap-2 text-red-400 text-[13px] font-medium mt-2'; errDiv.innerHTML = '<span class="iconify" data-icon="lucide:alert-circle" data-width="15"></span>Erreur lors de l\'envoi. Veuillez réessayer ou nous contacter directement par WhatsApp.'; btn.after(errDiv); } })
+      .finally(() => { btn.disabled = false; btn.innerHTML = 'Envoyer <span class="iconify" data-icon="lucide:send" data-width="14"></span>'; setTimeout(() => { okMsg.classList.add('hidden'); okMsg.classList.remove('flex'); const errEl = document.getElementById('ferr'); if (errEl) { errEl.classList.add('hidden'); errEl.classList.remove('flex') } }, 5000); });
+    });
+    document.querySelectorAll('.fi').forEach(input => { input.addEventListener('input', () => { input.classList.remove('err'); const errEl = input.parentElement.querySelector('.f-err'); if (errEl) errEl.classList.remove('show'); }) });
+    document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', function (e) { const t = this.getAttribute('href'); if (t === '#') return; e.preventDefault(); const el = document.querySelector(t); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }) });
+
+    /* Slow parallax on hero background */
+    const heroBgImg = document.querySelector('.hero-bg-img img');
+    if (heroBgImg) {
+      window.addEventListener('scroll', () => {
+        const s = window.scrollY;
+        if (s < window.innerHeight) {
+          heroBgImg.style.transform = `scale(1.08) translateY(${s * 0.15}px)`;
+        }
+      }, { passive: true });
+    }
+  </script>
+</body>
+</html> 
+
