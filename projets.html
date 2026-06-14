@@ -93,11 +93,15 @@
     .sec-doc{font-family:'Crispy Tacos','Host Grotesk',cursive;font-size:clamp(22px,3.5vw,32px);line-height:1.15;letter-spacing:-0.01em}
 
     /* Project Cards */
-    .pc{overflow:hidden;border-radius:10px}
+    .pc{overflow:hidden;border-radius:10px;cursor:pointer}
     .pc img{transition:transform .65s cubic-bezier(.22,1,.36,1)}.pc:hover img{transform:scale(1.035)}
     .pc .po{opacity:0;transition:opacity .35s}.pc:hover .po{opacity:1}
     .pc .pt{transform:translateY(10px);opacity:0;transition:all .35s cubic-bezier(.22,1,.36,1) .04s}.pc:hover .pt{transform:translateY(0);opacity:1}
     .pc .pp{transform:translateY(10px);opacity:0;transition:all .35s cubic-bezier(.22,1,.36,1) .08s}.pc:hover .pp{transform:translateY(0);opacity:1}
+
+    /* Video Play Button */
+    .play-btn{opacity:.65;transform:scale(.92);transition:all .35s cubic-bezier(.22,1,.36,1)}
+    .pc:hover .play-btn{opacity:1;transform:scale(1)}
 
     /* Filter Buttons */
     .filter-btn{padding:8px 20px;border-radius:8px;font-size:13px;font-weight:500;border:1px solid rgba(42,29,20,.08);color:#6B5B4D;transition:all .3s;cursor:pointer}
@@ -106,6 +110,10 @@
     
     /* Portfolio item transition */
     .portfolio-item{transition:opacity .4s cubic-bezier(.22,1,.36,1),transform .4s cubic-bezier(.22,1,.36,1)}
+
+    /* Video Modal */
+    #videoModal{transition:opacity .3s ease}
+    #videoModal.active{opacity:1;pointer-events:auto}
 
     body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.025;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAAAXNSR0IArs4c6QAAIABJREFUeF7tnQl8VNX/xz/fn3Mk5vNJmxyaJBkSCZJUqSIoqgCFfZ0FVdRRVV9AqKoql1qoiqJ6F+KKioIiiCoqr6gBFF1FW3UFEUQbZu8ny/0knlmWTM7Jx7szO7JyZe8+e+3ye+3x/z3NkzJy7v+e85997x73nN+gKz+GnEAAAAASUVORK5CYII=")}
   </style>
@@ -337,9 +345,167 @@
           <div class="relative aspect-[4/3]"><img src="uploads/images/brd5.jpg" alt="Charte visuelle Shaokao K25 pour restaurant de grillades" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Branding</span><h3 class="pp text-[19px] font-bold text-white">Shaokao K25</h3><p class="pp text-[12.5px] text-white/55 mt-1">Identité restaurant grillade</p></div></div>
         </div>
 
+        <!-- ══════════════════════════════════
+             MOTION DESIGN — 8 projets
+             ══════════════════════════════════ -->
+
+        <!-- MO1 -->
+        <div class="pc hov portfolio-item" data-category="motion" data-video-id="fFE_W9L7nkQ">
+          <div class="relative aspect-video">
+            <img src="https://img.youtube.com/vi/fFE_W9L7nkQ/hqdefault.jpg" alt="Projet Motion Design 1" class="w-full h-full object-cover" loading="lazy">
+            <div class="absolute inset-0 flex items-center justify-center z-[2]">
+              <div class="play-btn w-14 h-14 rounded-full bg-brand/90 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-brand/25">
+                <span class="iconify text-white" data-icon="lucide:play" data-width="22" style="margin-left:2px"></span>
+              </div>
+            </div>
+            <div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent z-[1]"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-7 z-[3]">
+              <span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Motion Design</span>
+              <h3 class="pp text-[19px] font-bold text-white">Projet Motion 1</h3>
+              <p class="pp text-[12.5px] text-white/55 mt-1">Animation vidéo</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MO2 -->
+        <div class="pc hov portfolio-item" data-category="motion" data-video-id="fTqSwTIlqkg">
+          <div class="relative aspect-video">
+            <img src="https://img.youtube.com/vi/fTqSwTIlqkg/hqdefault.jpg" alt="Projet Motion Design 2" class="w-full h-full object-cover" loading="lazy">
+            <div class="absolute inset-0 flex items-center justify-center z-[2]">
+              <div class="play-btn w-14 h-14 rounded-full bg-brand/90 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-brand/25">
+                <span class="iconify text-white" data-icon="lucide:play" data-width="22" style="margin-left:2px"></span>
+              </div>
+            </div>
+            <div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent z-[1]"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-7 z-[3]">
+              <span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Motion Design</span>
+              <h3 class="pp text-[19px] font-bold text-white">Projet Motion 2</h3>
+              <p class="pp text-[12.5px] text-white/55 mt-1">Animation vidéo</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MO3 -->
+        <div class="pc hov portfolio-item" data-category="motion" data-video-id="UdH-EuYUN1I">
+          <div class="relative aspect-video">
+            <img src="https://img.youtube.com/vi/UdH-EuYUN1I/hqdefault.jpg" alt="Projet Motion Design 3" class="w-full h-full object-cover" loading="lazy">
+            <div class="absolute inset-0 flex items-center justify-center z-[2]">
+              <div class="play-btn w-14 h-14 rounded-full bg-brand/90 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-brand/25">
+                <span class="iconify text-white" data-icon="lucide:play" data-width="22" style="margin-left:2px"></span>
+              </div>
+            </div>
+            <div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent z-[1]"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-7 z-[3]">
+              <span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Motion Design</span>
+              <h3 class="pp text-[19px] font-bold text-white">Projet Motion 3</h3>
+              <p class="pp text-[12.5px] text-white/55 mt-1">Animation vidéo</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MO4 -->
+        <div class="pc hov portfolio-item" data-category="motion" data-video-id="6xDenpYlVYM">
+          <div class="relative aspect-video">
+            <img src="https://img.youtube.com/vi/6xDenpYlVYM/hqdefault.jpg" alt="Projet Motion Design 4" class="w-full h-full object-cover" loading="lazy">
+            <div class="absolute inset-0 flex items-center justify-center z-[2]">
+              <div class="play-btn w-14 h-14 rounded-full bg-brand/90 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-brand/25">
+                <span class="iconify text-white" data-icon="lucide:play" data-width="22" style="margin-left:2px"></span>
+              </div>
+            </div>
+            <div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent z-[1]"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-7 z-[3]">
+              <span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Motion Design</span>
+              <h3 class="pp text-[19px] font-bold text-white">Projet Motion 4</h3>
+              <p class="pp text-[12.5px] text-white/55 mt-1">Animation vidéo</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MO5 -->
+        <div class="pc hov portfolio-item" data-category="motion" data-video-id="uM9HpuQE53Y">
+          <div class="relative aspect-video">
+            <img src="https://img.youtube.com/vi/uM9HpuQE53Y/hqdefault.jpg" alt="Projet Motion Design 5" class="w-full h-full object-cover" loading="lazy">
+            <div class="absolute inset-0 flex items-center justify-center z-[2]">
+              <div class="play-btn w-14 h-14 rounded-full bg-brand/90 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-brand/25">
+                <span class="iconify text-white" data-icon="lucide:play" data-width="22" style="margin-left:2px"></span>
+              </div>
+            </div>
+            <div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent z-[1]"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-7 z-[3]">
+              <span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Motion Design</span>
+              <h3 class="pp text-[19px] font-bold text-white">Projet Motion 5</h3>
+              <p class="pp text-[12.5px] text-white/55 mt-1">Animation vidéo</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MO6 -->
+        <div class="pc hov portfolio-item" data-category="motion" data-video-id="KmqKjmPHt-8">
+          <div class="relative aspect-video">
+            <img src="https://img.youtube.com/vi/KmqKjmPHt-8/hqdefault.jpg" alt="Projet Motion Design 6" class="w-full h-full object-cover" loading="lazy">
+            <div class="absolute inset-0 flex items-center justify-center z-[2]">
+              <div class="play-btn w-14 h-14 rounded-full bg-brand/90 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-brand/25">
+                <span class="iconify text-white" data-icon="lucide:play" data-width="22" style="margin-left:2px"></span>
+              </div>
+            </div>
+            <div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent z-[1]"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-7 z-[3]">
+              <span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Motion Design</span>
+              <h3 class="pp text-[19px] font-bold text-white">Projet Motion 6</h3>
+              <p class="pp text-[12.5px] text-white/55 mt-1">Animation vidéo</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MO7 -->
+        <div class="pc hov portfolio-item" data-category="motion" data-video-id="oA-XNriashY">
+          <div class="relative aspect-video">
+            <img src="https://img.youtube.com/vi/oA-XNriashY/hqdefault.jpg" alt="Projet Motion Design 7" class="w-full h-full object-cover" loading="lazy">
+            <div class="absolute inset-0 flex items-center justify-center z-[2]">
+              <div class="play-btn w-14 h-14 rounded-full bg-brand/90 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-brand/25">
+                <span class="iconify text-white" data-icon="lucide:play" data-width="22" style="margin-left:2px"></span>
+              </div>
+            </div>
+            <div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent z-[1]"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-7 z-[3]">
+              <span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Motion Design</span>
+              <h3 class="pp text-[19px] font-bold text-white">Projet Motion 7</h3>
+              <p class="pp text-[12.5px] text-white/55 mt-1">Animation vidéo</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MO8 -->
+        <div class="pc hov portfolio-item" data-category="motion" data-video-id="ZRG0S_8k1To">
+          <div class="relative aspect-video">
+            <img src="https://img.youtube.com/vi/ZRG0S_8k1To/hqdefault.jpg" alt="Projet Motion Design 8" class="w-full h-full object-cover" loading="lazy">
+            <div class="absolute inset-0 flex items-center justify-center z-[2]">
+              <div class="play-btn w-14 h-14 rounded-full bg-brand/90 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-brand/25">
+                <span class="iconify text-white" data-icon="lucide:play" data-width="22" style="margin-left:2px"></span>
+              </div>
+            </div>
+            <div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent z-[1]"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-7 z-[3]">
+              <span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Motion Design</span>
+              <h3 class="pp text-[19px] font-bold text-white">Projet Motion 8</h3>
+              <p class="pp text-[12.5px] text-white/55 mt-1">Animation vidéo</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
+
+  <!-- VIDEO MODAL -->
+  <div id="videoModal" class="fixed inset-0 z-[100002] flex items-center justify-center opacity-0 pointer-events-none" style="background:rgba(0,0,0,.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)">
+    <div class="relative w-full max-w-4xl mx-4 aspect-video bg-black rounded-xl overflow-hidden shadow-2xl">
+      <iframe id="videoIframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <button id="videoModalClose" class="absolute top-4 right-4 md:top-8 md:right-8 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors border-0 outline-none cursor-pointer z-[100003]">
+      <span class="iconify" data-icon="lucide:x" data-width="20"></span>
+    </button>
+  </div>
 
   <!-- FOOTER -->
   <footer class="bg-dark border-t border-white/[0.04] py-9 px-6 lg:px-10" role="contentinfo">
@@ -421,6 +587,44 @@
           }
         });
       });
+    });
+
+    /* ═══════════════════════════════════════
+       VIDEO MODAL
+       ═══════════════════════════════════════ */
+    const videoModal = document.getElementById('videoModal');
+    const videoIframe = document.getElementById('videoIframe');
+    const videoModalClose = document.getElementById('videoModalClose');
+
+    document.querySelectorAll('[data-video-id]').forEach(card => {
+      card.addEventListener('click', () => {
+        const videoId = card.getAttribute('data-video-id');
+        if(videoId) {
+          videoIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+          videoModal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+
+    function closeVideoModal() {
+      videoModal.classList.remove('active');
+      setTimeout(() => { 
+        videoIframe.src = ''; 
+        document.body.style.overflow = '';
+      }, 300);
+    }
+
+    videoModalClose.addEventListener('click', closeVideoModal);
+    
+    videoModal.addEventListener('click', (e) => {
+      if(e.target === videoModal) closeVideoModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+        closeVideoModal();
+      }
     });
   </script>
 </body>
