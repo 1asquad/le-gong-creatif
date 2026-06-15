@@ -124,8 +124,8 @@
     .sc{position:relative;overflow:hidden;border:1px solid rgba(42,29,20,.05);border-radius:12px;transition:all .4s ease;min-height:380px;display:flex;flex-direction:column}
     .sc:hover{border-color:rgba(217,123,42,.2);box-shadow:0 6px 32px rgba(217,123,42,.06);transform:translateY(-3px)}
     .sc-bg{position:absolute;inset:0;z-index:0}
-    .sc-bg img{width:100%;height:100%;object-fit:cover;transition:transform .65s cubic-bezier(.22,1,.36,1)}
-    .sc:hover .sc-bg img{transform:scale(1.05)}
+    .sc-bg {width:100%;height:100%;object-fit:cover;transition:transform .65s cubic-bezier(.22,1,.36,1)}
+    .sc:hover .sc-bg {transform:scale(1.05)}
     .sc-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,18,11,.52) 0%,rgba(26,18,11,.65) 100%);z-index:1}
     .sc-bg video{width:100%;height:100%;object-fit:cover;transition:transform .65s cubic-bezier(.22,1,.36,1)}
     .sc:hover .sc-bg video{transform:scale(1.05)}
@@ -140,8 +140,8 @@
     .sc .sc-tag{color:rgba(255,255,255,.5);background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.1)}
 
     .pc{overflow:hidden;border-radius:10px}
-    .pc img{transition:transform .65s cubic-bezier(.22,1,.36,1)}
-    .pc:hover img{transform:scale(1.035)}
+    .pc {transition:transform .65s cubic-bezier(.22,1,.36,1)}
+    .pc:hover {transform:scale(1.035)}
     .pc .po{opacity:0;transition:opacity .35s}.pc:hover .po{opacity:1}
     .pc .pt{transform:translateY(10px);opacity:0;transition:all .35s cubic-bezier(.22,1,.36,1) .04s}.pc:hover .pt{transform:translateY(0);opacity:1}
     .pc .pp{transform:translateY(10px);opacity:0;transition:all .35s cubic-bezier(.22,1,.36,1) .08s}.pc:hover .pp{transform:translateY(0);opacity:1}
@@ -153,9 +153,9 @@
     .tg:hover .tc:hover{opacity:1}
     .tc{position:relative;overflow:hidden;border-radius:14px;aspect-ratio:3/4.2;cursor:default;transition:opacity .5s cubic-bezier(.22,1,.36,1),transform .5s cubic-bezier(.22,1,.36,1),box-shadow .5s cubic-bezier(.22,1,.36,1)}
     .tc:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,.5)}
-    .tc-img{position:absolute;inset:0;z-index:0}
-    .tc-img img{width:100%;height:100%;object-fit:cover;object-position:center 18%;transition:transform .8s cubic-bezier(.22,1,.36,1),filter .6s}
-    .tc:hover .tc-img img{transform:scale(1.1);filter:brightness(1.08) saturate(1.1)}
+    .tc-{position:absolute;inset:0;z-index:0}
+    .tc- {width:100%;height:100%;object-fit:cover;object-position:center 18%;transition:transform .8s cubic-bezier(.22,1,.36,1),filter .6s}
+    .tc:hover .tc- {transform:scale(1.1);filter:brightness(1.08) saturate(1.1)}
     .tc-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 30%,rgba(26,18,11,.4) 55%,rgba(26,18,11,.92) 100%);transition:background .5s}
     .tc:hover .tc-ov{background:linear-gradient(180deg,rgba(26,18,11,.15) 10%,rgba(26,18,11,.5) 55%,rgba(26,18,11,.94) 100%)}
     .tc-badge{position:absolute;top:14px;left:14px;z-index:3;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:5px 10px;border-radius:6px;background:rgba(217,123,42,.85);color:#fff;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;transform:translateY(-6px);transition:all .4s cubic-bezier(.22,1,.36,1)}
@@ -260,22 +260,22 @@
     .sec-doc-dark{font-family:'Crispy Tacos','Host Grotesk',cursive;font-size:clamp(22px,3.5vw,32px);line-height:1.15;letter-spacing:-0.01em;color:#fff}
     .contact-doc{font-family:'Crispy Tacos','Host Grotesk',cursive;font-size:clamp(26px,4vw,42px);line-height:1.05;letter-spacing:-0.01em;color:#fff}
 
-    .hero-bg-img{
+    .hero-bg-{
       position:absolute;inset:0;z-index:0;
     }
-    .hero-bg-img img{
+    .hero-bg- {
       width:100%;height:100%;object-fit:cover;object-position:center center;
       filter:brightness(0.25) saturate(0.6);
       transition:transform 12s cubic-bezier(.22,1,.36,1);
     }
-    .hero-bg-img::after{
+    .hero-bg-::after{
       content:'';position:absolute;inset:0;
       background:
         linear-gradient(145deg,rgba(26,18,11,0.88) 0%,rgba(26,18,11,0.55) 35%,rgba(26,18,11,0.4) 55%,rgba(26,18,11,0.75) 100%);
       z-index:1;
     }
     @media(max-width:767px){
-      .hero-bg-img img{object-position:center 30%}
+      .hero-bg- {object-position:center 30%}
     }
 
     .hero-orb{position:absolute;border-radius:50%;pointer-events:none}
@@ -305,8 +305,8 @@
   <nav class="nav-outer" id="navOuter" aria-label="Navigation principale">
     <div class="nav-inner top" id="navInner">
       <a href="#" class="logo-wrap hov" id="logoLink" style="display:flex;align-items:center" aria-label="LE GONG CRÉATIF — Accueil">
-        <img src="uploads/images/Logoblanc.png" alt="" class="logo-dark" style="height:48px;width:auto;object-contain;position:absolute;top:50%;left:0;transform:translateY(-50%)">
-        <img src="uploads/images/Logorvb1.png" alt="" class="logo-light" style="height:48px;width:auto;object-contain">
+        < src="uploads/images/Logoblanc.png" alt="" class="logo-dark" style="height:48px;width:auto;object-contain;position:absolute;top:50%;left:0;transform:translateY(-50%)">
+        < src="uploads/images/Logorvb1.png" alt="" class="logo-light" style="height:48px;width:auto;object-contain">
         <span style="display:block;height:48px;visibility:hidden;width:clamp(130px,38vw,220px)">LE GONG CRÉATIF</span>
       </a>
       <div class="hidden md:flex items-center gap-1">
@@ -325,7 +325,7 @@
   <!-- Mobile Menu -->
   <div id="mob" class="fixed inset-0 z-[998] flex flex-col items-center justify-center gap-2 translate-x-full transition-transform duration-500 ease-out" role="dialog" aria-modal="true" aria-label="Menu de navigation">
     <a href="#" class="mob-link hov mb-3" style="opacity:0;transform:translateY(24px);transition:all .45s cubic-bezier(.22,1,.36,1)" id="mobLogo" aria-label="LE GONG CRÉATIF — Accueil">
-      <img src="uploads/images/Logorvb1.png" alt="" style="height:58px;width:auto;object-contain">
+      < src="uploads/images/Logorvb1.png" alt="" style="height:58px;width:auto;object-contain">
     </a>
     <a href="#about" class="mob-link text-[32px] font-bold text-txt hover:text-brand transition-colors hov py-2">À propos</a>
     <a href="#services" class="mob-link text-[32px] font-bold text-txt hover:text-brand transition-colors hov py-2">Services</a>
@@ -342,8 +342,8 @@
 
   <!-- HERO -->
   <section class="bg-dark relative overflow-hidden" aria-label="Accueil">
-    <div class="hero-bg-img">
-      <img src="uploads/images/hero-bg.png" alt="" loading="eager">
+    <div class="hero-bg-">
+      < src="uploads/images/hero.jpg" alt="" loading="eager">
     </div>
     <div class="absolute inset-0 opacity-[0.018] z-[1]" style="background-image:url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cpath d=%22M30 0v60M0 30h60%22 stroke=%22%23fff%22 stroke-width=%22.5%22/%3E%3C/svg%3E')"></div>
     <div class="hero-orb hero-orb-1" style="z-index:1"></div>
@@ -396,9 +396,9 @@
         <p class="text-sub text-[13px] max-w-[260px] rv d2">Chaque service est pensé pour répondre à un besoin réel de votre marque.</p>
       </div>
       <div class="grid md:grid-cols-2 gap-4">
-        <div class="sc rv d1 hov"><div class="sc-bg"><img src="uploads/images/prodvisuelle.jpg" alt="Communication Stratégique" loading="lazy"></div><div class="sc-content"><div class="flex items-start justify-between mb-6"><div class="si w-12 h-12 rounded-xl border border-white/15 bg-white/10 text-brand-brown-dk flex items-center justify-center backdrop-blur-sm"><span class="iconify" data-icon="lucide:megaphone" data-width="21"></span></div><span class="sa text-white"><span class="iconify" data-icon="lucide:arrow-up-right" data-width="17"></span></span></div><h3 class="text-[17px] font-bold mb-2">Communication Stratégique</h3><p class="text-[13.5px] font-light leading-relaxed mb-5">Stratégies de communication digitale, corporate et de crise pour renforcer votre image, engager votre audience et protéger votre réputation.</p><div class="flex flex-wrap gap-2 mt-auto"><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Digitale</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Corporate</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Gestion de crise</span></div></div></div>
-        <div class="sc rv d2 hov"><div class="sc-bg"><img src="uploads/images/idmarq.jpg" alt="Identité de marque" loading="lazy"></div><div class="sc-content"><div class="flex items-start justify-between mb-6"><div class="si w-12 h-12 rounded-xl border border-white/15 bg-white/10 text-brand flex items-center justify-center backdrop-blur-sm"><span class="iconify" data-icon="lucide:diamond" data-width="21"></span></div><span class="sa text-white"><span class="iconify" data-icon="lucide:arrow-up-right" data-width="17"></span></span></div><h3 class="text-[17px] font-bold mb-2">Identité de marque</h3><p class="text-[13.5px] font-light leading-relaxed mb-5">Logo, charte graphique, papeterie, guidelines : tout pour que votre marque soit immédiatement reconnaissable.</p><div class="flex flex-wrap gap-2 mt-auto"><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Logo</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Charte graphique</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Brand book</span></div></div></div>
-        <div class="sc rv d3 hov"><div class="sc-bg"><img src="uploads/images/digital.jpg" alt="Design digital" loading="lazy"></div><div class="sc-content"><div class="flex items-start justify-between mb-6"><div class="si w-12 h-12 rounded-xl border border-white/15 bg-white/10 text-brand-brown flex items-center justify-center backdrop-blur-sm"><span class="iconify" data-icon="lucide:layout-dashboard" data-width="21"></span></div><span class="sa text-white"><span class="iconify" data-icon="lucide:arrow-up-right" data-width="17"></span></span></div><h3 class="text-[17px] font-bold mb-2">Design digital</h3><p class="text-[13.5px] font-light leading-relaxed mb-5">Sites web, landing pages, applications : des interfaces qui allient esthétique et performance.</p><div class="flex flex-wrap gap-2 mt-auto"><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Site web</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">UI/UX</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Application</span></div></div></div>
+        <div class="sc rv d1 hov"><div class="sc-bg">< src="uploads/images/prodvisuelle.jpg" alt="Communication Stratégique" loading="lazy"></div><div class="sc-content"><div class="flex items-start justify-between mb-6"><div class="si w-12 h-12 rounded-xl border border-white/15 bg-white/10 text-brand-brown-dk flex items-center justify-center backdrop-blur-sm"><span class="iconify" data-icon="lucide:megaphone" data-width="21"></span></div><span class="sa text-white"><span class="iconify" data-icon="lucide:arrow-up-right" data-width="17"></span></span></div><h3 class="text-[17px] font-bold mb-2">Communication Stratégique</h3><p class="text-[13.5px] font-light leading-relaxed mb-5">Stratégies de communication digitale, corporate et de crise pour renforcer votre image, engager votre audience et protéger votre réputation.</p><div class="flex flex-wrap gap-2 mt-auto"><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Digitale</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Corporate</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Gestion de crise</span></div></div></div>
+        <div class="sc rv d2 hov"><div class="sc-bg">< src="uploads/images/idmarq.jpg" alt="Identité de marque" loading="lazy"></div><div class="sc-content"><div class="flex items-start justify-between mb-6"><div class="si w-12 h-12 rounded-xl border border-white/15 bg-white/10 text-brand flex items-center justify-center backdrop-blur-sm"><span class="iconify" data-icon="lucide:diamond" data-width="21"></span></div><span class="sa text-white"><span class="iconify" data-icon="lucide:arrow-up-right" data-width="17"></span></span></div><h3 class="text-[17px] font-bold mb-2">Identité de marque</h3><p class="text-[13.5px] font-light leading-relaxed mb-5">Logo, charte graphique, papeterie, guidelines : tout pour que votre marque soit immédiatement reconnaissable.</p><div class="flex flex-wrap gap-2 mt-auto"><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Logo</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Charte graphique</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Brand book</span></div></div></div>
+        <div class="sc rv d3 hov"><div class="sc-bg">< src="uploads/images/digital.jpg" alt="Design digital" loading="lazy"></div><div class="sc-content"><div class="flex items-start justify-between mb-6"><div class="si w-12 h-12 rounded-xl border border-white/15 bg-white/10 text-brand-brown flex items-center justify-center backdrop-blur-sm"><span class="iconify" data-icon="lucide:layout-dashboard" data-width="21"></span></div><span class="sa text-white"><span class="iconify" data-icon="lucide:arrow-up-right" data-width="17"></span></span></div><h3 class="text-[17px] font-bold mb-2">Design digital</h3><p class="text-[13.5px] font-light leading-relaxed mb-5">Sites web, landing pages, applications : des interfaces qui allient esthétique et performance.</p><div class="flex flex-wrap gap-2 mt-auto"><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Site web</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">UI/UX</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Application</span></div></div></div>
         <div class="sc rv d4 hov"><div class="sc-bg"><video src="uploads/images/motiondisign.mp4" autoplay muted loop playsinline class="w-full h-full object-cover"></video></div><div class="sc-content"><div class="flex items-start justify-between mb-6"><div class="si w-12 h-12 rounded-xl border border-white/15 bg-white/10 text-brand-dark flex items-center justify-center backdrop-blur-sm"><span class="iconify" data-icon="lucide:film" data-width="21"></span></div><span class="sa text-white"><span class="iconify" data-icon="lucide:arrow-up-right" data-width="17"></span></span></div><h3 class="text-[17px] font-bold mb-2">Production audiovisuelle et Motion</h3><p class="text-[13.5px] font-light leading-relaxed mb-5">Vidéos, animations, photographie et direction artistique : du contenu visuel et en mouvement qui capte, raconte et renforce votre communication.</p><div class="flex flex-wrap gap-2 mt-auto"><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Vidéo</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Animation</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Photo</span><span class="sc-tag text-[11px] font-medium px-3 py-1 rounded-full border">Dir. artistique</span></div></div></div>
       </div>
     </div>
@@ -412,10 +412,10 @@
         <a href="projets.html" class="group inline-flex items-center gap-2 text-[13px] font-semibold text-sub hover:text-brand transition-colors rv d2 hov">Tous les projets <span class="iconify transition-transform group-hover:translate-x-0.5" data-icon="lucide:arrow-right" data-width="14"></span></a>
       </div>
       <div class="grid md:grid-cols-2 gap-4">
-        <div class="pc rv d1 hov"><div class="relative aspect-[4/3]"><img src="uploads/images/id1.jpg" alt="Afrika Fashion Week" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Branding</span><h3 class="pp text-[19px] font-bold text-white">APSI-GA</h3><p class="pp text-[12.5px] text-white/55 mt-1">Identité visuelle complète</p></div></div></div>
-        <div class="pc rv d2 hov"><div class="relative aspect-[4/3]"><img src="uploads/images/id2.jpg" alt="Ci Gusta" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Ci Gusta</h3><p class="pp text-[12.5px] text-white/55 mt-1">Cover musicale</p></div></div></div>
-        <div class="pc rv d3 hov"><div class="relative aspect-[4/3]"><img src="uploads/images/id3.jpg" alt="Ouidah Festival" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-dark mb-2">Motion Design</span><h3 class="pp text-[19px] font-bold text-white">Réduction GeniComp</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche promotionnelle</p></div></div></div>
-        <div class="pc rv d4 hov"><div class="relative aspect-[4/3]"><img src="uploads/images/id4.jpg" alt="Diaspora Chronicles" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">SAEB Coming Soon</h3><p class="pp text-[12.5px] text-white/55 mt-1">Annonce d'ouverture</p></div></div></div>
+        <div class="pc rv d1 hov"><div class="relative aspect-[4/3]">< src="uploads/images/id1.jpg" alt="Afrika Fashion Week" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Branding</span><h3 class="pp text-[19px] font-bold text-white">APSI-GA</h3><p class="pp text-[12.5px] text-white/55 mt-1">Identité visuelle complète</p></div></div></div>
+        <div class="pc rv d2 hov"><div class="relative aspect-[4/3]">< src="uploads/images/id2.jpg" alt="Ci Gusta" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Ci Gusta</h3><p class="pp text-[12.5px] text-white/55 mt-1">Cover musicale</p></div></div></div>
+        <div class="pc rv d3 hov"><div class="relative aspect-[4/3]">< src="uploads/images/id3.jpg" alt="Ouidah Festival" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-dark mb-2">Motion Design</span><h3 class="pp text-[19px] font-bold text-white">Réduction GeniComp</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche promotionnelle</p></div></div></div>
+        <div class="pc rv d4 hov"><div class="relative aspect-[4/3]">< src="uploads/images/id4.jpg" alt="Diaspora Chronicles" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">SAEB Coming Soon</h3><p class="pp text-[12.5px] text-white/55 mt-1">Annonce d'ouverture</p></div></div></div>
       </div>
     </div>
   </section>
@@ -425,12 +425,12 @@
     <div class="max-w-[1180px] mx-auto">
       <div class="text-center mb-14 md:mb-18 rv"><span class="text-[11px] font-bold uppercase tracking-[0.25em] text-brand mb-4 block">Partenaires</span><h2 class="sec-doc">Ils nous font confiance</h2><p class="text-sub text-[14px] font-light mt-4 max-w-[380px] mx-auto leading-relaxed">Des organisations qui partagent notre vision de l'excellence créative.</p></div>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
-        <div class="partner-card rv d1"><img src="uploads/images/cesia.png" alt="CESIA" class="partner-logo" loading="lazy"><p class="partner-name">CESIA</p></div>
-        <div class="partner-card rv d2"><img src="uploads/images/apsi.png" alt="APSI-GA" class="partner-logo" loading="lazy"><p class="partner-name">APSI-GA</p></div>
-        <div class="partner-card rv d3"><img src="uploads/images/dstrust.png" alt="DSTRUST" class="partner-logo" loading="lazy"><p class="partner-name">DSTRUST</p></div>
-        <div class="partner-card rv d1"><img src="uploads/images/elyon.png" alt="Elyon Agro" class="partner-logo" loading="lazy"><p class="partner-name">Elyon Agro</p></div>
-        <div class="partner-card rv d2"><img src="uploads/images/isoc.png" alt="Internet Society Bénin" class="partner-logo" loading="lazy"><p class="partner-name">Internet Society Bénin</p></div>
-        <div class="partner-card rv d3"><img src="uploads/images/light.png" alt="LIGHT Innovation" class="partner-logo" loading="lazy"><p class="partner-name">LIGHT Innovation</p></div>
+        <div class="partner-card rv d1">< src="uploads/images/cesia.png" alt="CESIA" class="partner-logo" loading="lazy"><p class="partner-name">CESIA</p></div>
+        <div class="partner-card rv d2">< src="uploads/images/apsi.png" alt="APSI-GA" class="partner-logo" loading="lazy"><p class="partner-name">APSI-GA</p></div>
+        <div class="partner-card rv d3">< src="uploads/images/dstrust.png" alt="DSTRUST" class="partner-logo" loading="lazy"><p class="partner-name">DSTRUST</p></div>
+        <div class="partner-card rv d1">< src="uploads/images/elyon.png" alt="Elyon Agro" class="partner-logo" loading="lazy"><p class="partner-name">Elyon Agro</p></div>
+        <div class="partner-card rv d2">< src="uploads/images/isoc.png" alt="Internet Society Bénin" class="partner-logo" loading="lazy"><p class="partner-name">Internet Society Bénin</p></div>
+        <div class="partner-card rv d3">< src="uploads/images/light.png" alt="LIGHT Innovation" class="partner-logo" loading="lazy"><p class="partner-name">LIGHT Innovation</p></div>
       </div>
     </div>
   </section>
@@ -465,11 +465,11 @@
         <p class="text-white/35 text-[14px] font-light mt-4 max-w-[340px] mx-auto leading-relaxed">Cinq profils complémentaires, un seul objectif : l'excellence créative.</p>
       </div>
       <div class="tg">
-        <div class="tc rv d1"><div class="tc-img"><img src="uploads/images/team1.jpg" alt="Tanguy BARA" loading="lazy"></div><div class="tc-ov"></div><div class="tc-badge">Gongoneur</div><div class="tc-soc"><a href="https://www.facebook.com/share/1KKtmEs4cx/?mibextid=wwXIfr" aria-label="Facebook de Baraka"><span class="iconify" data-icon="mdi:facebook" data-width="16"></span></a><a href="#" aria-label="Email de Baraka"><span class="iconify" data-icon="lucide:mail" data-width="14"></span></a><a href="https://www.linkedin.com/in/baratanguy?utm_source=share_via&utm_content=profile&utm_medium=member_ios" aria-label="LinkedIn de Baraka"><span class="iconify" data-icon="mdi:linkedin" data-width="16"></span></a></div><div class="tc-info"><h3>Tanguy BARA</h3><p>Visual Designer- Consultant en Communication</p></div><div class="tc-line"></div></div>
-        <div class="tc rv d2"><div class="tc-img"><img src="uploads/images/team2.jpeg" alt="Raïssa CAKPO" loading="lazy"></div><div class="tc-ov"></div><div class="tc-soc"><a href="https://www.facebook.com/raissa.idunuoluwa.cakpo" aria-label="Facebook de Raïssa"><span class="iconify" data-icon="mdi:facebook" data-width="16"></span></a><a href="#" aria-label="Email de Raïssa"><span class="iconify" data-icon="lucide:mail" data-width="14"></span></a><a href="https://www.linkedin.com/in/ra%C3%AFssa-cakpo-b68690328/" aria-label="LinkedIn de Raïssa"><span class="iconify" data-icon="mdi:linkedin" data-width="16"></span></a></div><div class="tc-info"><h3>Raïssa CAKPO</h3><p>Social Media Manager - Digital Strategist</p></div><div class="tc-line"></div></div>
-        <div class="tc rv d3"><div class="tc-img"><img src="uploads/images/team3.jpeg" alt="Kamal KAKPO" loading="lazy"></div><div class="tc-ov"></div><div class="tc-soc"><a href="https://www.facebook.com/kakpokamal" aria-label="Facebook de Kamal"><span class="iconify" data-icon="mdi:facebook" data-width="16"></span></a><a href="#" aria-label="Email de Kamal"><span class="iconify" data-icon="lucide:mail" data-width="14"></span></a><a href="https://www.linkedin.com/feed/" aria-label="LinkedIn de Kamal"><span class="iconify" data-icon="mdi:linkedin" data-width="16"></span></a></div><div class="tc-info"><h3>Kamal KAKPO</h3><p>Designer 360</p></div><div class="tc-line"></div></div>
-        <div class="tc rv d4"><div class="tc-img"><img src="uploads/images/team4.jpeg" alt="Nadjath KORA" loading="lazy"></div><div class="tc-ov"></div><div class="tc-soc"><a href="https://www.facebook.com/nadji.issiakou" aria-label="Facebook de Nadjath"><span class="iconify" data-icon="mdi:facebook" data-width="16"></span></a><a href="#" aria-label="Email de Nadjath"><span class="iconify" data-icon="lucide:mail" data-width="14"></span></a><a href="#" aria-label="LinkedIn de Nadjath"><span class="iconify" data-icon="mdi:linkedin" data-width="16"></span></a></div><div class="tc-info"><h3>Nadjath Berkêgui KORA</h3><p>Designer Graphique</p></div><div class="tc-line"></div></div>
-        <div class="tc rv d5"><div class="tc-img"><img src="uploads/images/team5.jpeg" alt="Moïse BATCHO" loading="lazy"></div><div class="tc-ov"></div><div class="tc-soc"><a href="https://www.facebook.com/share/1EmV2FM5Qm/" aria-label="Facebook de Moïse"><span class="iconify" data-icon="mdi:facebook" data-width="16"></span></a><a href="#" aria-label="Email de Moïse"><span class="iconify" data-icon="lucide:mail" data-width="14"></span></a><a href="https://www.linkedin.com/in/mo%C3%AFse-batcho-5076a4186/" aria-label="LinkedIn de Moïse"><span class="iconify" data-icon="mdi:linkedin" data-width="16"></span></a></div><div class="tc-info"><h3>Moïse BATCHO</h3><p>Développeur - Spécialiste Audit et Sécurité SI</p></div><div class="tc-line"></div></div>
+        <div class="tc rv d1"><div class="tc-">< src="uploads/images/team1.jpg" alt="Tanguy BARA" loading="lazy"></div><div class="tc-ov"></div><div class="tc-badge">Gongoneur</div><div class="tc-soc"><a href="https://www.facebook.com/share/1KKtmEs4cx/?mibextid=wwXIfr" aria-label="Facebook de Baraka"><span class="iconify" data-icon="mdi:facebook" data-width="16"></span></a><a href="#" aria-label="Email de Baraka"><span class="iconify" data-icon="lucide:mail" data-width="14"></span></a><a href="https://www.linkedin.com/in/baratanguy?utm_source=share_via&utm_content=profile&utm_medium=member_ios" aria-label="LinkedIn de Baraka"><span class="iconify" data-icon="mdi:linkedin" data-width="16"></span></a></div><div class="tc-info"><h3>Tanguy BARA</h3><p>Visual Designer- Consultant en Communication</p></div><div class="tc-line"></div></div>
+        <div class="tc rv d2"><div class="tc-">< src="uploads/images/team2.jpeg" alt="Raïssa CAKPO" loading="lazy"></div><div class="tc-ov"></div><div class="tc-soc"><a href="https://www.facebook.com/raissa.idunuoluwa.cakpo" aria-label="Facebook de Raïssa"><span class="iconify" data-icon="mdi:facebook" data-width="16"></span></a><a href="#" aria-label="Email de Raïssa"><span class="iconify" data-icon="lucide:mail" data-width="14"></span></a><a href="https://www.linkedin.com/in/ra%C3%AFssa-cakpo-b68690328/" aria-label="LinkedIn de Raïssa"><span class="iconify" data-icon="mdi:linkedin" data-width="16"></span></a></div><div class="tc-info"><h3>Raïssa CAKPO</h3><p>Social Media Manager - Digital Strategist</p></div><div class="tc-line"></div></div>
+        <div class="tc rv d3"><div class="tc-">< src="uploads/images/team3.jpeg" alt="Kamal KAKPO" loading="lazy"></div><div class="tc-ov"></div><div class="tc-soc"><a href="https://www.facebook.com/kakpokamal" aria-label="Facebook de Kamal"><span class="iconify" data-icon="mdi:facebook" data-width="16"></span></a><a href="#" aria-label="Email de Kamal"><span class="iconify" data-icon="lucide:mail" data-width="14"></span></a><a href="https://www.linkedin.com/feed/" aria-label="LinkedIn de Kamal"><span class="iconify" data-icon="mdi:linkedin" data-width="16"></span></a></div><div class="tc-info"><h3>Kamal KAKPO</h3><p>Designer 360</p></div><div class="tc-line"></div></div>
+        <div class="tc rv d4"><div class="tc-">< src="uploads/images/team4.jpeg" alt="Nadjath KORA" loading="lazy"></div><div class="tc-ov"></div><div class="tc-soc"><a href="https://www.facebook.com/nadji.issiakou" aria-label="Facebook de Nadjath"><span class="iconify" data-icon="mdi:facebook" data-width="16"></span></a><a href="#" aria-label="Email de Nadjath"><span class="iconify" data-icon="lucide:mail" data-width="14"></span></a><a href="#" aria-label="LinkedIn de Nadjath"><span class="iconify" data-icon="mdi:linkedin" data-width="16"></span></a></div><div class="tc-info"><h3>Nadjath Berkêgui KORA</h3><p>Designer Graphique</p></div><div class="tc-line"></div></div>
+        <div class="tc rv d5"><div class="tc-">< src="uploads/images/team5.jpeg" alt="Moïse BATCHO" loading="lazy"></div><div class="tc-ov"></div><div class="tc-soc"><a href="https://www.facebook.com/share/1EmV2FM5Qm/" aria-label="Facebook de Moïse"><span class="iconify" data-icon="mdi:facebook" data-width="16"></span></a><a href="#" aria-label="Email de Moïse"><span class="iconify" data-icon="lucide:mail" data-width="14"></span></a><a href="https://www.linkedin.com/in/mo%C3%AFse-batcho-5076a4186/" aria-label="LinkedIn de Moïse"><span class="iconify" data-icon="mdi:linkedin" data-width="16"></span></a></div><div class="tc-info"><h3>Moïse BATCHO</h3><p>Développeur - Spécialiste Audit et Sécurité SI</p></div><div class="tc-line"></div></div>
       </div>
     </div>
   </section>
@@ -480,7 +480,7 @@
       <span class="qg text-[60px] leading-none" aria-hidden="true">"</span>
       <blockquote class="text-[19px] md:text-[24px] font-light leading-[1.55] tracking-tight text-txt -mt-3 mb-9">LE GONG CRÉATIF a su capter l'essence de notre festival et la traduire en une identité visuelle puissante. Un travail remarquable.</blockquote>
       <div class="flex items-center justify-center gap-3">
-        <img src="uploads/images/temoin.jpg" alt="" class="w-10 h-10 rounded-full object-cover" loading="lazy">
+        < src="uploads/images/temoin.jpg" alt="" class="w-10 h-10 rounded-full object-cover" loading="lazy">
         <div class="text-left"><p class="text-[13px] font-semibold">Marcoss Allassani</p><p class="text-[11.5px] text-sub">Directeur, Ouidah Festival</p></div>
       </div>
     </div>
@@ -527,7 +527,7 @@
   <footer class="bg-dark border-t border-white/[0.04] py-9 px-6 lg:px-10" role="contentinfo">
     <div class="max-w-[1180px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
       <a href="#" class="hov flex items-center" id="footerLogo" aria-label="LE GONG CRÉATIF — Retour en haut">
-        <img src="uploads/images/footer-logo.png" alt="" style="height:40px;width:auto;object-contain;opacity:.55;transition:opacity .3s" onmouseenter="this.style.opacity='.8'" onmouseleave="this.style.opacity='.55'">
+        < src="uploads/images/footer-logo.png" alt="" style="height:40px;width:auto;object-contain;opacity:.55;transition:opacity .3s" onmouseenter="this.style.opacity='.8'" onmouseleave="this.style.opacity='.55'">
       </a>
       <div class="flex items-center gap-2">
         <a href="#" class="soc-btn soc-btn-dark hov" style="width:32px;height:32px;border-radius:8px" aria-label="Facebook"><span class="iconify" data-icon="mdi:facebook" data-width="15"></span></a>
@@ -608,12 +608,12 @@
     document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', function (e) { const t = this.getAttribute('href'); if (t === '#') return; e.preventDefault(); const el = document.querySelector(t); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }) });
 
     /* Slow parallax on hero background */
-    const heroBgImg = document.querySelector('.hero-bg-img img');
-    if (heroBgImg) {
+    const heroBg = document.querySelector('.hero-bg- ');
+    if (heroBg) {
       window.addEventListener('scroll', () => {
         const s = window.scrollY;
         if (s < window.innerHeight) {
-          heroBgImg.style.transform = `scale(1.08) translateY(${s * 0.15}px)`;
+          heroBg.style.transform = `scale(1.08) translateY(${s * 0.15}px)`;
         }
       }, { passive: true });
     }
