@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Découvrez les projets de LE GONG CRÉATIF : affiches, identités visuelles, branding et motion design réalisés pour nos clients.">
+  <meta name="theme-color" content="#1A120B">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Nos Réalisations — LE GONG CRÉATIF">
+  <meta property="og:description" content="Une sélection de projets en branding, affiche, print et motion design.">
+  <meta property="og:image" content="uploads/images/id1.jpg">
   <title>Nos Réalisations — LE GONG CRÉATIF</title>
   <link rel="icon" type="image/png" href="uploads/images/Logorvb2.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -108,6 +116,8 @@
     .filter-btn{padding:8px 20px;border-radius:8px;font-size:13px;font-weight:500;border:1px solid rgba(42,29,20,.08);color:#6B5B4D;transition:all .3s;cursor:pointer}
     .filter-btn:hover{border-color:rgba(217,123,42,.3);color:#D97B2A}
     .filter-btn.active{background:#D97B2A;color:#fff;border-color:#D97B2A;box-shadow:0 4px 16px rgba(217,123,42,.2)}
+    .skip-link{position:absolute;top:-100%;left:16px;z-index:100004;background:#D97B2A;color:#fff;padding:8px 16px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:top .2s}
+    .skip-link:focus{top:16px}
     
     /* Portfolio item transition */
     .portfolio-item{transition:opacity .4s cubic-bezier(.22,1,.36,1),transform .4s cubic-bezier(.22,1,.36,1)}
@@ -126,6 +136,7 @@
 </head>
 <body>
 
+  <a href="#portfolioGrid" class="skip-link">Aller aux projets</a>
   <div class="cur-dot" id="cDot"></div>
   <div class="cur-ring" id="cRing"></div>
   <div class="nav-progress" id="navProg"></div>
@@ -183,11 +194,11 @@
       
       <!-- Filters -->
       <div class="flex flex-wrap justify-center gap-3 mb-14 rv">
-        <button class="filter-btn active" data-filter="all">Tous</button>
-        <button class="filter-btn" data-filter="digital">Affiche & Print</button>
-        <button class="filter-btn" data-filter="brand">Branding</button>
-        <button class="filter-btn" data-filter="motion">Motion Design</button>
-        <button class="filter-btn" data-filter="prod">Production</button>
+        <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">Tous</button>
+        <button type="button" class="filter-btn" data-filter="digital" aria-pressed="false">Affiche & Print</button>
+        <button type="button" class="filter-btn" data-filter="brand" aria-pressed="false">Branding</button>
+        <button type="button" class="filter-btn" data-filter="motion" aria-pressed="false">Motion Design</button>
+        <button type="button" class="filter-btn" data-filter="prod" aria-pressed="false">Production</button>
       </div>
 
       <!-- Grid -->
@@ -199,127 +210,127 @@
 
         <!-- AF1 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af1.jpg" alt="Affiche lumineuse de Pâques avec silhouette au lever du soleil" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Joyeuses Pâques</h3><p class="pp text-[12.5px] text-white/55 mt-1">Visuel de vœux pascals</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af1.jpg" alt="Affiche lumineuse de Pâques avec silhouette au lever du soleil" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Joyeuses Pâques</h3><p class="pp text-[12.5px] text-white/55 mt-1">Visuel de vœux pascals</p></div></div>
         </div>
 
         <!-- AF2 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af2.jpg" alt="Affiche Afro Night pour gala de charité avec artiste invité" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Afro Night Gala de charité</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche événementielle caritative</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af2.jpg" alt="Affiche Afro Night pour gala de charité avec artiste invité" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Afro Night Gala de charité</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche événementielle caritative</p></div></div>
         </div>
 
         <!-- AF3 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af3.jpg" alt="Promotion Ola Bio sur les emballages pour grossistes" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Ola Bio Promo Choc</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche promotionnelle grossistes</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af3.jpg" alt="Promotion Ola Bio sur les emballages pour grossistes" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Ola Bio Promo Choc</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche promotionnelle grossistes</p></div></div>
         </div>
 
         <!-- AF4 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af4.jpg" alt="Visuel Ola Bio Tabaski avec bélier et emballages" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Ola Bio Tabaski</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche saisonnière Tabaski</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af4.jpg" alt="Visuel Ola Bio Tabaski avec bélier et emballages" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Ola Bio Tabaski</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche saisonnière Tabaski</p></div></div>
         </div>
 
         <!-- AF5 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af5.jpg" alt="Programme de matinée touristique avec monuments et montgolfières" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">La Matinée Touristique</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche tourisme & excursion</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af5.jpg" alt="Programme de matinée touristique avec monuments et montgolfières" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">La Matinée Touristique</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche tourisme & excursion</p></div></div>
         </div>
 
         <!-- AF6 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af6.jpg" alt="Visuel teasing SABÉ pour ouverture au Golden Tulip" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">SAEB Coming Soon</h3><p class="pp text-[12.5px] text-white/55 mt-1">Annonce d'ouverture</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af6.jpg" alt="Visuel teasing SABÉ pour ouverture au Golden Tulip" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">SAEB Coming Soon</h3><p class="pp text-[12.5px] text-white/55 mt-1">Annonce d'ouverture</p></div></div>
         </div>
 
         <!-- AF7 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af7.jpg" alt="Affiche musicale de Bouba Fulani avec micro et portrait" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Bouba Fulani en concert</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche de concert</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af7.jpg" alt="Affiche musicale de Bouba Fulani avec micro et portrait" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Bouba Fulani en concert</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche de concert</p></div></div>
         </div>
 
         <!-- AF8 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af8.jpg" alt="Visuel musical rose pour Ladesh et First King" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Ci Gusta</h3><p class="pp text-[12.5px] text-white/55 mt-1">Cover musicale</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af8.jpg" alt="Visuel musical rose pour Ladesh et First King" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Ci Gusta</h3><p class="pp text-[12.5px] text-white/55 mt-1">Cover musicale</p></div></div>
         </div>
 
         <!-- AF9 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af9.jpg" alt="Mockup de dépliant pour l'Université Agricole K-D.K" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Université Agricole K-D.K</h3><p class="pp text-[12.5px] text-white/55 mt-1">Dépliant institutionnel</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af9.jpg" alt="Mockup de dépliant pour l'Université Agricole K-D.K" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Université Agricole K-D.K</h3><p class="pp text-[12.5px] text-white/55 mt-1">Dépliant institutionnel</p></div></div>
         </div>
 
         <!-- AF10 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af10.jpg" alt="Mockup de brochure pliée pour l'Université Agricole K-D.K" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Université Agricole K-D.K</h3><p class="pp text-[12.5px] text-white/55 mt-1">Brochure institutionnelle</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af10.jpg" alt="Mockup de brochure pliée pour l'Université Agricole K-D.K" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Université Agricole K-D.K</h3><p class="pp text-[12.5px] text-white/55 mt-1">Brochure institutionnelle</p></div></div>
         </div>
 
         <!-- AF11 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af11.jpg" alt="Affiche verte « Se connaître pour mieux s'orienter »" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Live Session Orientation</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche formation & orientation</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af11.jpg" alt="Affiche verte « Se connaître pour mieux s'orienter »" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Live Session Orientation</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche formation & orientation</p></div></div>
         </div>
 
         <!-- AF12 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af12.jpg" alt="Annonce de mariage fleurie pour Andil et Malikah" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Andil & Malikah</h3><p class="pp text-[12.5px] text-white/55 mt-1">Save the date mariage</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af12.jpg" alt="Annonce de mariage fleurie pour Andil et Malikah" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Andil & Malikah</h3><p class="pp text-[12.5px] text-white/55 mt-1">Save the date mariage</p></div></div>
         </div>
 
         <!-- AF13 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af13.jpg" alt="Campagne de dépistage du cancer de la prostate" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Dépistage du cancer</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche santé publique</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af13.jpg" alt="Campagne de dépistage du cancer de la prostate" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Dépistage du cancer</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche santé publique</p></div></div>
         </div>
 
         <!-- AF14 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af14.jpg" alt="Visuel Ola Bio pour la fête de la Pentecôte" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Ola Bio Pentecôte</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche de vœux</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af14.jpg" alt="Visuel Ola Bio pour la fête de la Pentecôte" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Ola Bio Pentecôte</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche de vœux</p></div></div>
         </div>
 
         <!-- AF15 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af15.jpg" alt="Campagne de dépistage et prise en charge de la cataracte" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Opération Cataracte</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche santé accessible</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af15.jpg" alt="Campagne de dépistage et prise en charge de la cataracte" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Opération Cataracte</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche santé accessible</p></div></div>
         </div>
 
         <!-- AF16 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af16.jpg" alt="Affiche santé publique sur l'importance du dépistage visuel" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Santé visuelle</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche de sensibilisation</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af16.jpg" alt="Affiche santé publique sur l'importance du dépistage visuel" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Santé visuelle</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche de sensibilisation</p></div></div>
         </div>
 
         <!-- AF17 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af17.jpg" alt="Offre de moins 50 % pour affiches communales" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Réduction GeniComp</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche promotionnelle</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af17.jpg" alt="Offre de moins 50 % pour affiches communales" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Réduction GeniComp</h3><p class="pp text-[12.5px] text-white/55 mt-1">Affiche promotionnelle</p></div></div>
         </div>
 
         <!-- AF18 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af18.jpg" alt="Roll-up de bienvenue pour l'Université Agricole K-D.K" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Université Agricole K-D.K</h3><p class="pp text-[12.5px] text-white/55 mt-1">Roll-up d'accueil</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af18.jpg" alt="Roll-up de bienvenue pour l'Université Agricole K-D.K" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Université Agricole K-D.K</h3><p class="pp text-[12.5px] text-white/55 mt-1">Roll-up d'accueil</p></div></div>
         </div>
 
         <!-- AF19 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af19.jpg" alt="Roll-up présentant les produits de la ferme K-D.K" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Ferme K-D.K</h3><p class="pp text-[12.5px] text-white/55 mt-1">Roll-up produits agricoles</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af19.jpg" alt="Roll-up présentant les produits de la ferme K-D.K" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Ferme K-D.K</h3><p class="pp text-[12.5px] text-white/55 mt-1">Roll-up produits agricoles</p></div></div>
         </div>
 
         <!-- AF20 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af20.jpg" alt="Roll-up présentant les produits de la ferme K-D.K" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Ferme K-D.K</h3><p class="pp text-[12.5px] text-white/55 mt-1">Roll-up produits agricoles</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af20.jpg" alt="Roll-up présentant les produits de la ferme K-D.K" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Ferme K-D.K</h3><p class="pp text-[12.5px] text-white/55 mt-1">Roll-up produits agricoles</p></div></div>
         </div>
 
         <!-- AF21 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af21.jpg" alt="Roll-up sur l'élevage de 40 000 pondeuses" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Projet Œuf et Asticots</h3><p class="pp text-[12.5px] text-white/55 mt-1">Roll-up agroalimentaire</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af21.jpg" alt="Roll-up sur l'élevage de 40 000 pondeuses" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Projet Œuf et Asticots</h3><p class="pp text-[12.5px] text-white/55 mt-1">Roll-up agroalimentaire</p></div></div>
         </div>
 
         <!-- AF22 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af22.jpg" alt="Roll-up des filières de formation de l'Université Agricole K-D.K" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Université Agricole K-D.K</h3><p class="pp text-[12.5px] text-white/55 mt-1">Roll-up filières agricoles</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af22.jpg" alt="Roll-up des filières de formation de l'Université Agricole K-D.K" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Université Agricole K-D.K</h3><p class="pp text-[12.5px] text-white/55 mt-1">Roll-up filières agricoles</p></div></div>
         </div>
 
         <!-- AF23 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af23.jpg" alt="Affiche de lancement du nouveau site web Elyon Agro" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Elyon Agro</h3><p class="pp text-[12.5px] text-white/55 mt-1">Annonce site internet</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af23.jpg" alt="Affiche de lancement du nouveau site web Elyon Agro" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Elyon Agro</h3><p class="pp text-[12.5px] text-white/55 mt-1">Annonce site internet</p></div></div>
         </div>
 
         <!-- AF24 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af24.jpg" alt="Affiche sobre de Pâques avec symbole de croix" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Excellente fête de Pâques</h3><p class="pp text-[12.5px] text-white/55 mt-1">Visuel de vœux pascals</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af24.jpg" alt="Affiche sobre de Pâques avec symbole de croix" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Excellente fête de Pâques</h3><p class="pp text-[12.5px] text-white/55 mt-1">Visuel de vœux pascals</p></div></div>
         </div>
 
         <!-- AF25 -->
         <div class="pc hov portfolio-item" data-category="digital">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/af25.jpg" alt="Affiche de Pâques avec croix sur fond lumineux" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Bonne fête de Pâques</h3><p class="pp text-[12.5px] text-white/55 mt-1">Visuel de vœux pascals</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/af25.jpg" alt="Affiche de Pâques avec croix sur fond lumineux" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand-brown mb-2">Affiche & Print</span><h3 class="pp text-[19px] font-bold text-white">Bonne fête de Pâques</h3><p class="pp text-[12.5px] text-white/55 mt-1">Visuel de vœux pascals</p></div></div>
         </div>
 
         <!-- ══════════════════════════════════
@@ -328,27 +339,27 @@
 
         <!-- BRD1 -->
         <div class="pc hov portfolio-item" data-category="brand">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/brd1.jpg" alt="Planche de branding YouthPoliticForum avec logo, couleurs et supports" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Branding</span><h3 class="pp text-[19px] font-bold text-white">YouthPoliticForum</h3><p class="pp text-[12.5px] text-white/55 mt-1">Identité visuelle & déclinaisons</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/brd1.jpg" alt="Planche de branding YouthPoliticForum avec logo, couleurs et supports" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Branding</span><h3 class="pp text-[19px] font-bold text-white">YouthPoliticForum</h3><p class="pp text-[12.5px] text-white/55 mt-1">Identité visuelle & déclinaisons</p></div></div>
         </div>
 
         <!-- BRD2 -->
         <div class="pc hov portfolio-item" data-category="brand">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/brd2.jpg" alt="Planche de branding PJD Graphik avec logo et supports" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Branding</span><h3 class="pp text-[19px] font-bold text-white">PJD Graphik</h3><p class="pp text-[12.5px] text-white/55 mt-1">Identité de marque</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/brd2.jpg" alt="Planche de branding PJD Graphik avec logo et supports" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Branding</span><h3 class="pp text-[19px] font-bold text-white">PJD Graphik</h3><p class="pp text-[12.5px] text-white/55 mt-1">Identité de marque</p></div></div>
         </div>
 
         <!-- BRD3 -->
         <div class="pc hov portfolio-item" data-category="brand">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/brd3.jpg" alt="Planche d'identité Point avec couleurs, logo et applications" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Branding</span><h3 class="pp text-[19px] font-bold text-white">Point</h3><p class="pp text-[12.5px] text-white/55 mt-1">Charte graphique & supports</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/brd3.jpg" alt="Planche d'identité Point avec couleurs, logo et applications" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Branding</span><h3 class="pp text-[19px] font-bold text-white">Point</h3><p class="pp text-[12.5px] text-white/55 mt-1">Charte graphique & supports</p></div></div>
         </div>
 
         <!-- BRD4 -->
         <div class="pc hov portfolio-item" data-category="brand">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/brd4.jpg" alt="Planche de branding Digit Ben avec logo et supports numériques" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Branding</span><h3 class="pp text-[19px] font-bold text-white">Digit Ben</h3><p class="pp text-[12.5px] text-white/55 mt-1">Identité digitale</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/brd4.jpg" alt="Planche de branding Digit Ben avec logo et supports numériques" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Branding</span><h3 class="pp text-[19px] font-bold text-white">Digit Ben</h3><p class="pp text-[12.5px] text-white/55 mt-1">Identité digitale</p></div></div>
         </div>
 
         <!-- BRD5 -->
         <div class="pc hov portfolio-item" data-category="brand">
-          <div class="relative aspect-[4/3]"><img src="uploads/images/brd5.jpg" alt="Charte visuelle Shaokao K25 pour restaurant de grillades" class="w-full h-full object-cover" loading="lazy"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Branding</span><h3 class="pp text-[19px] font-bold text-white">Shaokao K25</h3><p class="pp text-[12.5px] text-white/55 mt-1">Identité restaurant grillade</p></div></div>
+          <div class="relative aspect-[4/3]"><img src="uploads/images/brd5.jpg" alt="Charte visuelle Shaokao K25 pour restaurant de grillades" class="w-full h-full object-cover" loading="lazy" decoding="async"><div class="po absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div><div class="absolute bottom-0 left-0 right-0 p-7"><span class="pt inline-block text-[11px] font-bold uppercase tracking-wider text-brand mb-2">Branding</span><h3 class="pp text-[19px] font-bold text-white">Shaokao K25</h3><p class="pp text-[12.5px] text-white/55 mt-1">Identité restaurant grillade</p></div></div>
         </div>
 
         <!-- ══════════════════════════════════
@@ -358,7 +369,7 @@
         <!-- MO1 -->
         <div class="pc hov portfolio-item" data-category="motion" data-video-id="fFE_W9L7nkQ">
           <div class="relative aspect-video">
-            <img src="https://img.youtube.com/vi/fFE_W9L7nkQ/hqdefault.jpg" alt="Projet Motion Design 1" class="w-full h-full object-cover" loading="lazy">
+            <img src="https://img.youtube.com/vi/fFE_W9L7nkQ/hqdefault.jpg" alt="Projet Motion Design 1" class="w-full h-full object-cover" loading="lazy" decoding="async">
             <div class="absolute inset-0 flex items-center justify-center z-[2]">
               <div class="play-btn w-14 h-14 rounded-full bg-brand/90 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-brand/25">
                 <span class="iconify text-white" data-icon="lucide:play" data-width="22" style="margin-left:2px"></span>
@@ -376,7 +387,7 @@
         <!-- MO2 -->
         <div class="pc hov portfolio-item" data-category="motion" data-video-id="fTqSwTIlqkg">
           <div class="relative aspect-video">
-            <img src="https://img.youtube.com/vi/fTqSwTIlqkg/hqdefault.jpg" alt="Projet Motion Design 2" class="w-full h-full object-cover" loading="lazy">
+            <img src="https://img.youtube.com/vi/fTqSwTIlqkg/hqdefault.jpg" alt="Projet Motion Design 2" class="w-full h-full object-cover" loading="lazy" decoding="async">
             <div class="absolute inset-0 flex items-center justify-center z-[2]">
               <div class="play-btn w-14 h-14 rounded-full bg-brand/90 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-brand/25">
                 <span class="iconify text-white" data-icon="lucide:play" data-width="22" style="margin-left:2px"></span>
@@ -394,7 +405,7 @@
         <!-- MO3 -->
         <div class="pc hov portfolio-item" data-category="motion" data-video-id="UdH-EuYUN1I">
           <div class="relative aspect-video">
-            <img src="https://img.youtube.com/vi/UdH-EuYUN1I/hqdefault.jpg" alt="Projet Motion Design 3" class="w-full h-full object-cover" loading="lazy">
+            <img src="https://img.youtube.com/vi/UdH-EuYUN1I/hqdefault.jpg" alt="Projet Motion Design 3" class="w-full h-full object-cover" loading="lazy" decoding="async">
             <div class="absolute inset-0 flex items-center justify-center z-[2]">
               <div class="play-btn w-14 h-14 rounded-full bg-brand/90 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-brand/25">
                 <span class="iconify text-white" data-icon="lucide:play" data-width="22" style="margin-left:2px"></span>
@@ -412,7 +423,7 @@
         <!-- MO4 -->
         <div class="pc hov portfolio-item" data-category="motion" data-video-id="6xDenpYlVYM">
           <div class="relative aspect-video">
-            <img src="https://img.youtube.com/vi/6xDenpYlVYM/hqdefault.jpg" alt="Projet Motion Design 4" class="w-full h-full object-cover" loading="lazy">
+            <img src="https://img.youtube.com/vi/6xDenpYlVYM/hqdefault.jpg" alt="Projet Motion Design 4" class="w-full h-full object-cover" loading="lazy" decoding="async">
             <div class="absolute inset-0 flex items-center justify-center z-[2]">
               <div class="play-btn w-14 h-14 rounded-full bg-brand/90 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-brand/25">
                 <span class="iconify text-white" data-icon="lucide:play" data-width="22" style="margin-left:2px"></span>
@@ -430,7 +441,7 @@
         <!-- MO5 -->
         <div class="pc hov portfolio-item" data-category="motion" data-video-id="uM9HpuQE53Y">
           <div class="relative aspect-video">
-            <img src="https://img.youtube.com/vi/uM9HpuQE53Y/hqdefault.jpg" alt="Projet Motion Design 5" class="w-full h-full object-cover" loading="lazy">
+            <img src="https://img.youtube.com/vi/uM9HpuQE53Y/hqdefault.jpg" alt="Projet Motion Design 5" class="w-full h-full object-cover" loading="lazy" decoding="async">
             <div class="absolute inset-0 flex items-center justify-center z-[2]">
               <div class="play-btn w-14 h-14 rounded-full bg-brand/90 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-brand/25">
                 <span class="iconify text-white" data-icon="lucide:play" data-width="22" style="margin-left:2px"></span>
@@ -448,7 +459,7 @@
         <!-- MO6 -->
         <div class="pc hov portfolio-item" data-category="motion" data-video-id="KmqKjmPHt-8">
           <div class="relative aspect-video">
-            <img src="https://img.youtube.com/vi/KmqKjmPHt-8/hqdefault.jpg" alt="Projet Motion Design 6" class="w-full h-full object-cover" loading="lazy">
+            <img src="https://img.youtube.com/vi/KmqKjmPHt-8/hqdefault.jpg" alt="Projet Motion Design 6" class="w-full h-full object-cover" loading="lazy" decoding="async">
             <div class="absolute inset-0 flex items-center justify-center z-[2]">
               <div class="play-btn w-14 h-14 rounded-full bg-brand/90 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-brand/25">
                 <span class="iconify text-white" data-icon="lucide:play" data-width="22" style="margin-left:2px"></span>
@@ -466,7 +477,7 @@
         <!-- MO7 -->
         <div class="pc hov portfolio-item" data-category="motion" data-video-id="oA-XNriashY">
           <div class="relative aspect-video">
-            <img src="https://img.youtube.com/vi/oA-XNriashY/hqdefault.jpg" alt="Projet Motion Design 7" class="w-full h-full object-cover" loading="lazy">
+            <img src="https://img.youtube.com/vi/oA-XNriashY/hqdefault.jpg" alt="Projet Motion Design 7" class="w-full h-full object-cover" loading="lazy" decoding="async">
             <div class="absolute inset-0 flex items-center justify-center z-[2]">
               <div class="play-btn w-14 h-14 rounded-full bg-brand/90 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-brand/25">
                 <span class="iconify text-white" data-icon="lucide:play" data-width="22" style="margin-left:2px"></span>
@@ -484,7 +495,7 @@
         <!-- MO8 -->
         <div class="pc hov portfolio-item" data-category="motion" data-video-id="ZRG0S_8k1To">
           <div class="relative aspect-video">
-            <img src="https://img.youtube.com/vi/ZRG0S_8k1To/hqdefault.jpg" alt="Projet Motion Design 8" class="w-full h-full object-cover" loading="lazy">
+            <img src="https://img.youtube.com/vi/ZRG0S_8k1To/hqdefault.jpg" alt="Projet Motion Design 8" class="w-full h-full object-cover" loading="lazy" decoding="async">
             <div class="absolute inset-0 flex items-center justify-center z-[2]">
               <div class="play-btn w-14 h-14 rounded-full bg-brand/90 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-brand/25">
                 <span class="iconify text-white" data-icon="lucide:play" data-width="22" style="margin-left:2px"></span>
@@ -504,11 +515,12 @@
   </section>
 
   <!-- VIDEO MODAL -->
-  <div id="videoModal" class="fixed inset-0 z-[100002] flex items-center justify-center opacity-0 pointer-events-none" style="background:rgba(0,0,0,.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)">
+  <div id="videoModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="videoModalTitle" inert class="fixed inset-0 z-[100002] flex items-center justify-center opacity-0 pointer-events-none" style="background:rgba(0,0,0,.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)">
+    <h2 id="videoModalTitle" class="sr-only">Lecture du projet vidéo</h2>
     <div class="relative w-full max-w-4xl mx-4 aspect-video bg-black rounded-xl overflow-hidden shadow-2xl">
-      <iframe id="videoIframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <iframe id="videoIframe" title="Vidéo du projet" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
-    <button id="videoModalClose" class="absolute top-4 right-4 md:top-8 md:right-8 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors border-0 outline-none cursor-pointer z-[100003]">
+    <button type="button" id="videoModalClose" aria-label="Fermer la vidéo" class="absolute top-4 right-4 md:top-8 md:right-8 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors border-0 outline-none cursor-pointer z-[100003]">
       <span class="iconify" data-icon="lucide:x" data-width="20"></span>
     </button>
   </div>
@@ -577,8 +589,12 @@
 
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
+        filterBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
         btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
         
         const filter = btn.dataset.filter;
         
@@ -601,23 +617,43 @@
     const videoModal = document.getElementById('videoModal');
     const videoIframe = document.getElementById('videoIframe');
     const videoModalClose = document.getElementById('videoModalClose');
+    let lastVideoTrigger = null;
 
-    document.querySelectorAll('[data-video-id]').forEach(card => {
-      card.addEventListener('click', () => {
+    function openVideoModal(card) {
         const videoId = card.getAttribute('data-video-id');
         if(videoId) {
+          lastVideoTrigger = card;
           videoIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+          videoModal.removeAttribute('inert');
           videoModal.classList.add('active');
+          videoModal.setAttribute('aria-hidden', 'false');
           document.body.style.overflow = 'hidden';
+          videoModalClose.focus();
+        }
+    }
+
+    document.querySelectorAll('[data-video-id]').forEach(card => {
+      const title = card.querySelector('h3')?.textContent?.trim() || 'projet vidéo';
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', `Lire la vidéo : ${title}`);
+      card.addEventListener('click', () => openVideoModal(card));
+      card.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openVideoModal(card);
         }
       });
     });
 
     function closeVideoModal() {
       videoModal.classList.remove('active');
+      videoModal.setAttribute('aria-hidden', 'true');
+      videoModal.setAttribute('inert', '');
       setTimeout(() => { 
         videoIframe.src = ''; 
         document.body.style.overflow = '';
+        lastVideoTrigger?.focus();
       }, 300);
     }
 
